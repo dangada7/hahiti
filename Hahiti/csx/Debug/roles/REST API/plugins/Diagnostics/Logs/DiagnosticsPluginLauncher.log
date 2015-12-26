@@ -1,0 +1,19 @@
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] At least one other instance of the launcher is running. Will wait until they all finish
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Service running in Emulator Mode, will not wait/kill other instances of the launcher
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\REST API\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] DiagnosticsStoreRootPath set to: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\REST API\approot
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Loading config file: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\REST API\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Config file to read: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\REST API\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\REST API\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:07] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:08] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:08] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:08] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:08] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:09:08] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Error: 0 : [12/26/2015 17:10:11] DiagnosticsPlugin launch failed with exit code -1
+DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 17:10:11] DiagnosticPlugin exited with code -1

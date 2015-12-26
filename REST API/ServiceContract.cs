@@ -10,9 +10,9 @@ namespace REST_API
     [ServiceContract]    
     public interface ServiceContract
     {
-        [WebInvoke(Method = "PUT", UriTemplate = "users/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "PUT", UriTemplate = "users/{data}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
-        String AddUser(string id);
+        string AddUser(string data);
 
         [WebInvoke(Method = "GET", UriTemplate = "users/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
@@ -20,6 +20,18 @@ namespace REST_API
 
         [WebInvoke(Method = "DELETE", UriTemplate = "users/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
-        string RemoveUser(string id);   
+        string RemoveUser(string id);
+        
+        [WebInvoke(Method = "PUT", UriTemplate = "groups/{data}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string AddGroup(string data);
+
+        [WebInvoke(Method = "GET", UriTemplate = "groups/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string GetGroup(string id);
+
+        [WebInvoke(Method = "DELETE", UriTemplate = "groups/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string RemoveGroup(string id);   
     }
 }

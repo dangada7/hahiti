@@ -26,4 +26,27 @@ namespace REST_API
         public string Name { get; set; }
         public string Email { get; set; }
     }
+
+    [DataContract]
+    public class Group
+    {
+        public Group()
+        {
+
+        }
+
+        public Group(string Id, string Name, string Description)
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Description = Description;
+        }
+
+
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+    }
+
 }

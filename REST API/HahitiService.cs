@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Web;
@@ -18,15 +20,22 @@ namespace REST_API
     {
         Dictionary<String, User> users = new Dictionary<String, User>();
         Dictionary<String, Group> groups = new Dictionary<String, Group>();
-        public string AddUser(string data)
+
+        private string getData(Message message)
         {
+            byte[] buff = new byte[512];
+            message.GetBody<Stream>().Read(buff, 0, 512);
+            return System.Text.Encoding.Default.GetString(buff).Split('\u0000')[0];
+        }
+        public string AddUser(string id)
+        {                                  
             try
             {
                 JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-                User newUser = json_serializer.Deserialize<User>(data);
-                if (!users.Keys.Contains(newUser.Id))
+                User newUser = json_serializer.Deserialize<User>(getData(OperationContext.Current.RequestContext.RequestMessage));
+                if (!users.Keys.Contains(id))
                 {
-                    users.Add(newUser.Id, newUser);
+                    users.Add(id, newUser);
                     return "Added new user: " + newUser.Name;
                 }
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
@@ -78,16 +87,16 @@ namespace REST_API
             }
         }
 
-        public string AddGroup(string data)
+        public string AddGroup(string id)
         {
             JavaScriptSerializer json_serializer = new JavaScriptSerializer();
 
             try
             {
-                Group newGroup = json_serializer.Deserialize<Group>(data);
-                if (!groups.Keys.Contains(newGroup.Id))
+                Group newGroup = json_serializer.Deserialize<Group>(getData(OperationContext.Current.RequestContext.RequestMessage));
+                if (!groups.Keys.Contains(id))
                 {
-                    groups.Add(newGroup.Id, newGroup);
+                    groups.Add(id, newGroup);
                     return "Added new group: " + newGroup.Name;
                 }
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;

@@ -1,15 +1,25 @@
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] DiagnosticsStoreRootPath set to: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] Loading config file: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] Config file to read: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] Checking VM Type
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] Extension set to Emulator Mode
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] Reading XML configuration file
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] Bypassing private config decryption
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:10] Stopping the running plugin, if any
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:11] No DiagnosticsPlugin is running.
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:11] Killing any DiagnosticsPlugin that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:11] Killing any MonAgentHost that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:12] Diagnostics plugin stopped successfully
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:50:12] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] At least one other instance of the launcher is running. Will wait until they all finish
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Service running in Emulator Mode, will not wait/kill other instances of the launcher
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] DiagnosticsStoreRootPath set to: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Loading config file: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Config file to read: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:58] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:59] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:59] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\REST API\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:59] Loading config file: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:59] Config file to read: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Report Analyzer\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:59] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:59] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:59] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:59] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:53:59] Forcefully terminated DiagnosticsPlugin.exe process with pid 8796
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:53:59] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\REST API\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:54:07] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:54:07] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:54:07] Resetting DiagnosticPlugin

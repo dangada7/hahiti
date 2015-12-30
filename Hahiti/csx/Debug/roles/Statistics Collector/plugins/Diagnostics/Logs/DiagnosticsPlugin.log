@@ -1,17 +1,17 @@
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Starting DiagnosticPlugin.exe DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Successfully saved IIS Directory state
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Starting DiagnosticsPlugin
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\diagnostics.wadcfgx
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] DiagnosticsStoreRootPath set to: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Loading config file: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\diagnostics.wadcfgx
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Config file to read: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\diagnostics.wadcfgx
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Checking VM Type
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\diagnostics.wadcfgx
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Extension set to Emulator Mode
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Reading XML configuration file
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Bypassing private config decryption
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] WadCfg is provided in initial configuration. Using that to initialize Diagnostics.
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Starting DiagnosticPlugin.exe DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Successfully saved IIS Directory state
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Starting DiagnosticsPlugin
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] DiagnosticsStoreRootPath set to: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Loading config file: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Config file to read: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Checking VM Type
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Extension set to Emulator Mode
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Reading XML configuration file
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Bypassing private config decryption
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] WadCfg is provided in initial configuration. Using that to initialize Diagnostics.
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
   <WadCfg>
     <DiagnosticMonitorConfiguration overallQuotaInMB="4096">
       <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter="Error" />
@@ -43,15 +43,15 @@ DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] <PublicConfig xmlns
   </WadCfg>
   <StorageAccount>devstoreaccount1</StorageAccount>
 </PublicConfig>
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Private setting is loaded
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Is config json/xml loaded
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Successfully created checkpoint file C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\WAD0105\Configuration\Checkpoint.txt
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Will use local resource directory C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\WAD0105
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:13] Will use endpoint https://core.windows.net for storage.
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:14] Expanding path %SystemDrive%\inetpub\logs\LogFiles to C:\inetpub\logs\LogFiles
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:14] Expanding path %SystemDrive%\inetpub\logs\FailedReqLogFiles to C:\inetpub\logs\FailedReqLogFiles
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:14] Created IIS log watch item: "C:\inetpub\logs\LogFiles"
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:14] Created IIS failed requests watch item: "C:\inetpub\logs\FailedReqLogFiles"
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:14] Running in emulator mode, crash dumps not enabled
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:14] Checking to see if Application Insights extension needs to be configured.
-DiagnosticsPlugin.exe Information: 0 : [12/26/2015 18:50:14] In emulator mode and using devstore updating XStoreAccount info, command line args: -LocalPath "C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\WAD0105"  -ConfigFile "C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\WAD0105\Configuration\MaConfig.xml" -ShutDownEvent WADDM-ShutDown-78087e51b0e14edf8d4d8fb76d46d62c  -TotalShutDownEvent WADDM-TotalShutDown-78087e51b0e14edf8d4d8fb76d46d62c -InitializedEvent WADM-StartUp-78087e51b0e14edf8d4d8fb76d46d62c -parent 7432 -events -wadVer1v5 -UseProxyServer -XStoreAccounts WadAccount#true#devstoreaccount1#Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==#http://127.0.0.1:10002#http://127.0.0.1:10001#http://127.0.0.1:10000
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Private setting is loaded
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:06] Is config json/xml loaded
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:07] Successfully created checkpoint file C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\WAD0105\Configuration\Checkpoint.txt
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:07] Will use local resource directory C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\WAD0105
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:07] Will use endpoint https://core.windows.net for storage.
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:08] Expanding path %SystemDrive%\inetpub\logs\LogFiles to C:\inetpub\logs\LogFiles
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:08] Expanding path %SystemDrive%\inetpub\logs\FailedReqLogFiles to C:\inetpub\logs\FailedReqLogFiles
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:08] Created IIS log watch item: "C:\inetpub\logs\LogFiles"
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:08] Created IIS failed requests watch item: "C:\inetpub\logs\FailedReqLogFiles"
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:08] Running in emulator mode, crash dumps not enabled
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:08] Checking to see if Application Insights extension needs to be configured.
+DiagnosticsPlugin.exe Information: 0 : [12/30/2015 09:54:09] In emulator mode and using devstore updating XStoreAccount info, command line args: -LocalPath "C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\WAD0105"  -ConfigFile "C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Statistics Collector\approot\WAD0105\Configuration\MaConfig.xml" -ShutDownEvent WADDM-ShutDown-f72668a8b1434b90863d49e1b8fa066e  -TotalShutDownEvent WADDM-TotalShutDown-f72668a8b1434b90863d49e1b8fa066e -InitializedEvent WADM-StartUp-f72668a8b1434b90863d49e1b8fa066e -parent 7708 -events -wadVer1v5 -UseProxyServer -XStoreAccounts WadAccount#true#devstoreaccount1#Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==#http://127.0.0.1:10002#http://127.0.0.1:10001#http://127.0.0.1:10000

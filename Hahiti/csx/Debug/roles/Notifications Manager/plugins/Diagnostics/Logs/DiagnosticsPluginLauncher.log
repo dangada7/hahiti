@@ -1,12 +1,19 @@
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] At least one other instance of the launcher is running. Will wait until they all finish
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Service running in Emulator Mode, will not wait/kill other instances of the launcher
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] DiagnosticsStoreRootPath set to: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Loading config file: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Config file to read: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Checking VM Type
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Extension set to Emulator Mode
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Reading XML configuration file
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Bypassing private config decryption
-DiagnosticsPluginLauncher.exe Information: 0 : [12/26/2015 18:51:06] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:56] At least one other instance of the launcher is running. Will wait until they all finish
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Service running in Emulator Mode, will not wait/kill other instances of the launcher
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] DiagnosticsStoreRootPath set to: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Loading config file: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Config file to read: C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Emulator config file set to C:\Users\victor\Source\Repos\Hahiti\Hahiti\csx\Debug\roles\Notifications Manager\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:52:57] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Error: 0 : [12/30/2015 09:54:00] DiagnosticsPlugin launch failed with exit code -1
+DiagnosticsPluginLauncher.exe Information: 0 : [12/30/2015 09:54:00] DiagnosticPlugin exited with code -1

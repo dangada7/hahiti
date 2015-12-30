@@ -14,10 +14,8 @@ namespace REST_API
     {
         public override bool OnStart()
         {
-            WebServiceHost host = new WebServiceHost(typeof(HahitiService),
-            new Uri("http://localhost:8080/hahiti"));
+            WebServiceHost host = new WebServiceHost(typeof(HahitiService), new Uri("http://localhost:8080/hahiti"));
             host.Open();
-
             return base.OnStart();
         }
     }

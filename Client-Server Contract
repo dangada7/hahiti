@@ -1,0 +1,12 @@
+Main URL: http://{server_ip}/hahiti
+
+Client-Server Contract:
+
+    Action    |     HTTP Method      |     URL
+-------------------------------------------------------
+Add User      |  PUT                 |  /users/{JSON string} //may be moved to message body in the future
+Remove User   |  DELETE              |  /users/{id}
+Get User      |  GET                 |  /users/{id}
+Add Group     |  PUT                 |  /groups/{JSON string} //may be moved to message body in the future
+Remove Group  |  DELETE              |  /groups/{id}
+Get Group     |  GET                 |  /groups/{id}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)file:///C:/Users/dan/Desktop/react/hahiti/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Hello React</title>
+    <link rel="stylesheet" href="./Hello React_files/style.css">
+    <script src="./Hello React_files/react-0.14.3.js"></script>
+    <script src="./Hello React_files/react-dom-0.14.3.js"></script>
+    <script src="./Hello React_files/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"><div class="group" data-reactid=".0"><h1 data-reactid=".0.0"> group1 </h1><img src="./Hello React_files/defualt_group.png" alt="defualt group image" data-reactid=".0.1"><pre data-reactid=".0.2"><span data-reactid=".0.2.0"> </span><span data-reactid=".0.2.1"></span><span data-reactid=".0.2.2"> </span></pre></div></div>
+    <script type="text/babel">
+
+    var Group = React.createClass({
+      getInitialState: function() {
+        return {showGroupInfo: false};
+      },
+      handleClick: function(event) {
+        this.setState({showGroupInfo: !this.state.showGroupInfo});
+      },
+      render: function() {
+        var text = this.state.showGroupInfo ? 'basic info 1 \n i am the man' : '';
+        return (
+          <div className="group">
+            <h1> group1 </h1>
+            <img onClick={this.handleClick} src="images/defualt_group.png" alt="defualt group image" />
+            <pre> {text} </pre>
+          </div>
+        );
+      }
+    });
+
+
+
+    var Groups = React.createClass({
+
+      render: function() {
+
+        return (
+          <Group />
+        );
+      }
+    });
+
+
+    ReactDOM.render(
+      <Groups />,
+      document.getElementById('example')
+    );
+
+    </script>
+  
+
+</body></html>

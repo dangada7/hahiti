@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://fb.me/react-0.14.3.js"></script>
+    <script src="https://fb.me/react-dom-0.14.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+
+    <script type="text/babel">
+
+    var data = [
+      {id: 1, name: "Group 1", imageLoc: "images/defualt_group.png", info: 'basic info 1 \n basic info 2 \n basic info 3'},
+      {id: 2, name: "Group 2", imageLoc: "images/defualt_group.png", info: 'basic info 1 \n basic info 2 \n basic info 3'},
+      {id: 3, name: "Group 3", imageLoc: "images/defualt_group.png", info: 'basic info 1 \n basic info 2 \n basic info 3'},
+      {id: 4, name: "Group 4", imageLoc: "images/defualt_group.png", info: 'basic info 1 \n basic info 2 \n basic info 3'}
+    ];
+
+//88888888888888888888888888888888888888888888888
+//  Group info
+//88888888888888888888888888888888888888888888888
+    var GroupInfo = React.createClass({
+      render: function() {
+          return (
+            <div>
+              <pre> {this.props.info} </pre>
+              <form action="students.html">
+                <button onclick="location.href='http://google.com"> enter to group </button>
+              </form>
+            </div>
+          );
+      }
+    });
+//88888888888888888888888888888888888888888888888
+//  Group
+//88888888888888888888888888888888888888888888888
+    var Group = React.createClass({
+      getInitialState: function() {
+        return {showGroupInfo: false};
+      },
+      handleClick: function(event) {
+        this.setState({showGroupInfo: !this.state.showGroupInfo});
+      },
+      render: function() {
+        return (
+          <div className="group">
+            <h1> {this.props.name} </h1>
+            <img onClick={this.handleClick} src={this.props.imageLoc} alt="defualt group image" />
+            { this.state.showGroupInfo ? <GroupInfo info={this.props.info} /> : null}
+          </div>
+        );
+      }
+    });
+
+//88888888888888888888888888888888888888888888888
+//  Groups
+//88888888888888888888888888888888888888888888888
+    var Groups = React.createClass({
+      render: function() {
+
+      var commentNodes = this.props.data.map(function(groupData) {
+      return (
+        <Group name={groupData.name} imageLoc={groupData.imageLoc} info={groupData.info} />
+        );
+      });
+
+        //return stuff
+        return (
+          <div>
+            {commentNodes}
+          </div>
+        );
+      }
+    });
+//88888888888888888888888888888888888888888888888
+//  ReactDOM.render
+//88888888888888888888888888888888888888888888888
+    ReactDOM.render(
+      <Groups data={data}/>,
+      document.getElementById('example')
+    );
+
+    </script>
+  </body>
+</html>

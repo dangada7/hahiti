@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello React</title>
+    <title>hahiti</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://fb.me/react-0.14.3.js"></script>
     <script src="https://fb.me/react-dom-0.14.3.js"></script>
@@ -21,9 +21,9 @@
     ];
 
 //88888888888888888888888888888888888888888888888
-//  Group info
+//  Group info Component
 //88888888888888888888888888888888888888888888888
-    var GroupInfo = React.createClass({
+    var GroupInfoComponent = React.createClass({
       render: function() {
           return (
             <div>
@@ -36,9 +36,9 @@
       }
     });
 //88888888888888888888888888888888888888888888888
-//  Group
+//  Group Component
 //88888888888888888888888888888888888888888888888
-    var Group = React.createClass({
+    var GroupComponent = React.createClass({
       getInitialState: function() {
         return {showGroupInfo: false};
       },
@@ -50,28 +50,54 @@
           <div className="group">
             <h1> {this.props.name} </h1>
             <img onClick={this.handleClick} src={this.props.imageLoc} alt="defualt group image" />
-            { this.state.showGroupInfo ? <GroupInfo info={this.props.info} /> : null}
+            { this.state.showGroupInfo ? <GroupInfoComponent info={this.props.info} /> : null}
           </div>
         );
       }
     });
 
 //88888888888888888888888888888888888888888888888
-//  Groups
+//  add group Component
 //88888888888888888888888888888888888888888888888
-    var Groups = React.createClass({
+var AddGroupComponent = React.createClass({
+  render: function() {
+    return (
+      <div className="addGrouoComponent">
+        <p> 
+          group name: 
+          <input type="text"/>
+          <button> add group </button>
+        </p>
+        
+      </div>
+    );
+  }
+});
+//88888888888888888888888888888888888888888888888
+//  Groups Component
+//88888888888888888888888888888888888888888888888
+    var GroupsComponent = React.createClass({
+
+      getInitialState: function() {
+        return {showAddGroupComp: false};
+      },
+      handleClick: function(event) {
+        this.setState({showAddGroupComp: !this.state.showAddGroupComp});
+      },
+
       render: function() {
-
-      var commentNodes = this.props.data.map(function(groupData) {
-      return (
-        <Group name={groupData.name} imageLoc={groupData.imageLoc} info={groupData.info} />
-        );
-      });
-
+        //-----------------------------
+        var groups = this.props.data.map(function(groupData) {
+          return (
+            <GroupComponent name={groupData.name} imageLoc={groupData.imageLoc} info={groupData.info} />
+            );
+        });
         //return stuff
         return (
           <div>
-            {commentNodes}
+           <button onClick={this.handleClick} > show add group </button>
+            {this.state.showAddGroupComp ? <AddGroupComponent/> : null}
+            {groups}
           </div>
         );
       }
@@ -80,10 +106,9 @@
 //  ReactDOM.render
 //88888888888888888888888888888888888888888888888
     ReactDOM.render(
-      <Groups data={data}/>,
+      <GroupsComponent data={data}/>,
       document.getElementById('example')
     );
-
     </script>
   </body>
 </html>

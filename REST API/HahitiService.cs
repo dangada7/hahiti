@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -21,9 +22,6 @@ namespace REST_API
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class HahitiService : ServiceContract
     {
-        Dictionary<String, User> users = new Dictionary<String, User>();
-        Dictionary<String, Group> groups = new Dictionary<String, Group>();
-
         private string getCurrentMessageData()
         {
             byte[] buff = new byte[512];
@@ -31,126 +29,108 @@ namespace REST_API
             return System.Text.Encoding.Default.GetString(buff).Split('\u0000')[0];
         }
         public string AddUser(string id)
-        {                                  
-            try
-            {
-                JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-                User userData = json_serializer.Deserialize<User>(getCurrentMessageData());
-                User newUser = new User(id, userData.Username, userData.Name, userData.Email);   
-             
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
-                // Create the table client.
-                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-                // Create the table if it doesn't exist.
-                CloudTable table = tableClient.GetTableReference("users");
-                // Build insert operation.
-                TableOperation insertOperation = TableOperation.Insert(newUser);
-                // Execute the insert operation.
-                table.Execute(insertOperation);
-                return "Added new user: " + newUser.Name;                
-            }
-            catch (Exception e)
-            {
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message;
-            }
+        {                                              
+            return CRUD.addData<User>(id, "users");
         }
 
         public string GetUser(string id)
         {
-            try
-            {                
-                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
-                    //Create the table client.
-                    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-                    //Create the table if it doesn't exist.
-                    CloudTable table = tableClient.GetTableReference("users");                    
-                    TableOperation getOp = TableOperation.Retrieve<User>("USER", id);
-                    User user = (User)table.Execute(getOp).Result;                    
-                    return new JavaScriptSerializer().Serialize(user);                
-            }
-            catch (Exception e)
-            {
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message;
-            }                        
+            return CRUD.getData<User>(id, "users");            
         }
 
         public string RemoveUser(string id)
         {
-            try
-            {
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
-                //Create the table client.
-                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-                //Create the table if it doesn't exist.
-                CloudTable table = tableClient.GetTableReference("users");
-                TableOperation retrieveOperation = TableOperation.Retrieve<User>("USER", id);
-                TableResult retrieveResult = table.Execute(retrieveOperation);
-                User userToDelete = (User)retrieveResult.Result;
-                if (userToDelete != null)
-                {
-                    TableOperation deleteOperation = TableOperation.Delete(userToDelete);
-                    table.Execute(deleteOperation);
-                    return "User " + id + " was deleted!";
-                }
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "User not found!";
-            }
-            catch (Exception e)
-            {
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message;
-            }
+            return CRUD.removeData<User>(id, "users");         
         }
 
         public string AddGroup(string id)
         {
-            try
-            {
-                JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-                Group groupData = json_serializer.Deserialize<Group>(getCurrentMessageData());
-                Group newGroup = new Group(id, groupData.Name, groupData.Description);     
-                newGroup.Id = id;
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
-                // Create the table client.
-                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-                // Create the table if it doesn't exist.
-                CloudTable table = tableClient.GetTableReference("groups");
-                // Build insert operation.
-                TableOperation insertOperation = TableOperation.Insert(newGroup);
-                // Execute the insert operation.
-                table.Execute(insertOperation);
-                return "Added new group: " + newGroup.Name;
-            }
-            catch (Exception e)
-            {
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message;
-            }
+            return CRUD.addData<Group>(id, "groups");
         }
 
         public string GetGroup(string id)
         {
+            return CRUD.getData<Group>(id, "groups");              
+        }
+
+        public string RemoveGroup(string id)
+        {
+            return CRUD.removeData<Group>(id, "groups");         
+        }
+
+        public string AddReport(string id)
+        {
+            return CRUD.addData<Report>(id, "reports");
+        }
+
+        public string GetReport(string id)
+        {
+            return CRUD.getData<Report>(id, "reports");    
+        }
+
+        public string RemoveReport(string id)
+        {
+            return CRUD.removeData<Report>(id, "reports");        
+        }
+    }
+
+    public class CRUD
+    {
+        private static string getCurrentMessageData()
+        {
+            byte[] buff = new byte[512];
+            System.ServiceModel.OperationContext.Current.RequestContext.RequestMessage.GetBody<Stream>().Read(buff, 0, 512);
+            return System.Text.Encoding.Default.GetString(buff).Split('\u0000')[0];
+        }
+        public static string addData<T>(string id, string category) where T : Microsoft.WindowsAzure.Storage.Table.TableEntity, IdentifiableObject
+        {            
             try
             {
+                JavaScriptSerializer json_serializer = new JavaScriptSerializer();
+                T data = json_serializer.Deserialize<T>(getCurrentMessageData());
+
+
+                string[] properties = new string[typeof(T).GetProperties().Length];
+                properties[0] = id;
+                int i = 1;
+                foreach (PropertyInfo propertyInfo in typeof(T).GetProperties())
+                {
+                    if (propertyInfo.CanRead)
+                    {
+                        object value = propertyInfo.GetValue(data, null);
+                        if (value != null)
+                        {
+                            properties[i] = value.ToString();
+                        }
+                        else
+                        {
+                            i -= 1;
+                        }
+                    }
+                    i += 1;
+                }
+
+                T newData = (T)Activator.CreateInstance(typeof(T), properties);
+
                 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
-                //Create the table client.
+                // Create the table client.
                 CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-                //Create the table if it doesn't exist.
-                CloudTable table = tableClient.GetTableReference("groups");
-                TableOperation getOp = TableOperation.Retrieve<Group>("GROUP", id);
-                Group group = (Group)table.Execute(getOp).Result;
-                return new JavaScriptSerializer().Serialize(group);
+                // Create the table if it doesn't exist.
+                CloudTable table = tableClient.GetTableReference(category);
+                // Build insert operation.
+                TableOperation insertOperation = TableOperation.Insert(newData);
+                // Execute the insert operation.
+                table.Execute(insertOperation);
+                return "Added new " + category.Substring(0, category.Length - 1) + ": " + newData.Id;
             }
             catch (Exception e)
             {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 return "ERROR - " + e.Message;
-            }                           
+            }
         }
 
-        public string RemoveGroup(string id)
+        public static string getData<T>(string id, string category) where T : Microsoft.WindowsAzure.Storage.Table.TableEntity, IdentifiableObject
         {
             try
             {
@@ -158,18 +138,46 @@ namespace REST_API
                 //Create the table client.
                 CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
                 //Create the table if it doesn't exist.
-                CloudTable table = tableClient.GetTableReference("groups");
-                TableOperation retrieveOperation = TableOperation.Retrieve<Group>("GROUP", id);
-                TableResult retrieveResult = table.Execute(retrieveOperation);
-                Group groupToDelete = (Group)retrieveResult.Result;
-                if (groupToDelete != null)
+                CloudTable table = tableClient.GetTableReference(category);
+                TableOperation getOp = TableOperation.Retrieve<T>(category.Substring(0,category.Length - 1).ToUpper(), id);
+                T data = (T)table.Execute(getOp).Result;
+                if (data != null)
                 {
-                    TableOperation deleteOperation = TableOperation.Delete(groupToDelete);
+                    return new JavaScriptSerializer().Serialize(data);
+                }
+                else
+                {
+                    WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                    return category.Substring(0, category.Length - 1) + " not found!";
+                }
+            }
+            catch (Exception e)
+            {
+                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                return "ERROR - " + e.Message;
+            }    
+        }
+
+        public static string removeData<T>(string id, string category) where T : Microsoft.WindowsAzure.Storage.Table.TableEntity, IdentifiableObject
+        {
+            try
+            {
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+                //Create the table client.
+                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+                //Create the table if it doesn't exist.
+                CloudTable table = tableClient.GetTableReference(category);
+                TableOperation retrieveOperation = TableOperation.Retrieve<T>(category.Substring(0, category.Length - 1).ToUpper(), id);
+                TableResult retrieveResult = table.Execute(retrieveOperation);
+                T dataToDelete = (T)retrieveResult.Result;
+                if (dataToDelete != null)
+                {
+                    TableOperation deleteOperation = TableOperation.Delete(dataToDelete);
                     table.Execute(deleteOperation);
-                    return "Group " + id + " was deleted!";
+                    return category.Substring(0, category.Length - 1) + " " + id + " was deleted!";
                 }
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "Group not found!";
+                return category.Substring(0, category.Length - 1) + " not found!";
             }
             catch (Exception e)
             {
@@ -177,5 +185,7 @@ namespace REST_API
                 return "ERROR - " + e.Message;
             }
         }
+
+
     }
 }

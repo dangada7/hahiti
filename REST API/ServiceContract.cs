@@ -32,6 +32,18 @@ namespace REST_API
 
         [WebInvoke(Method = "DELETE", UriTemplate = "groups/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
-        string RemoveGroup(string id);   
+        string RemoveGroup(string id);
+
+        [WebInvoke(Method = "PUT", UriTemplate = "reports/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string AddReport(string id);
+
+        [WebInvoke(Method = "GET", UriTemplate = "reports/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string GetReport(string id);
+
+        [WebInvoke(Method = "DELETE", UriTemplate = "reports/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string RemoveReport(string id);   
     }
 }

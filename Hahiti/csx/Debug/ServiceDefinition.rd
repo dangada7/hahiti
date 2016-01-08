@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Hahiti" generation="1" functional="0" release="0" Id="2c9c2b87-8b4c-4919-b60f-f183a1e98b7e" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Hahiti" generation="1" functional="0" release="0" Id="27832174-c6df-4926-aabd-637f6a569176" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="HahitiGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -201,9 +201,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="d30101e8-bc75-4814-ad80-cec0ea2af14d" ref="Microsoft.RedDog.Contract\ServiceContract\HahitiContract@ServiceDefinition">
+    <implementation Id="f582d635-cc32-4606-9b41-c52a51bc822b" ref="Microsoft.RedDog.Contract\ServiceContract\HahitiContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="d5d6a376-e057-42d8-8336-72c0455c770c" ref="Microsoft.RedDog.Contract\Interface\REST API:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="15d466cf-358e-4f98-891a-5370e21a920f" ref="Microsoft.RedDog.Contract\Interface\REST API:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/Hahiti/HahitiGroup/REST API:Endpoint1" />
           </inPort>

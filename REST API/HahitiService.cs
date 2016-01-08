@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Table;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,10 +24,10 @@ namespace REST_API
         Dictionary<String, User> users = new Dictionary<String, User>();
         Dictionary<String, Group> groups = new Dictionary<String, Group>();
 
-        private string getData(Message message)
+        private string getCurrentMessageData()
         {
             byte[] buff = new byte[512];
-            message.GetBody<Stream>().Read(buff, 0, 512);
+            System.ServiceModel.OperationContext.Current.RequestContext.RequestMessage.GetBody<Stream>().Read(buff, 0, 512);
             return System.Text.Encoding.Default.GetString(buff).Split('\u0000')[0];
         }
         public string AddUser(string id)
@@ -32,14 +35,19 @@ namespace REST_API
             try
             {
                 JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-                User newUser = json_serializer.Deserialize<User>(getData(OperationContext.Current.RequestContext.RequestMessage));
-                if (!users.Keys.Contains(id))
-                {
-                    users.Add(id, newUser);
-                    return "Added new user: " + newUser.Name;
-                }
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "User with id " + newUser.Id + " already exists.";
+                User userData = json_serializer.Deserialize<User>(getCurrentMessageData());
+                User newUser = new User(id, userData.Username, userData.Name, userData.Email);   
+             
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+                // Create the table client.
+                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+                // Create the table if it doesn't exist.
+                CloudTable table = tableClient.GetTableReference("users");
+                // Build insert operation.
+                TableOperation insertOperation = TableOperation.Insert(newUser);
+                // Execute the insert operation.
+                table.Execute(insertOperation);
+                return "Added new user: " + newUser.Name;                
             }
             catch (Exception e)
             {
@@ -51,19 +59,20 @@ namespace REST_API
         public string GetUser(string id)
         {
             try
-            {
-                if (users.Keys.Contains(id))
-                {
-                    User user = users[id];
-                    return new JavaScriptSerializer().Serialize(user);
-                }
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "User not found!";
+            {                
+                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+                    //Create the table client.
+                    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+                    //Create the table if it doesn't exist.
+                    CloudTable table = tableClient.GetTableReference("users");                    
+                    TableOperation getOp = TableOperation.Retrieve<User>("USER", id);
+                    User user = (User)table.Execute(getOp).Result;                    
+                    return new JavaScriptSerializer().Serialize(user);                
             }
             catch (Exception e)
             {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message + " (" + id + ")";
+                return "ERROR - " + e.Message;
             }                        
         }
 
@@ -71,11 +80,19 @@ namespace REST_API
         {
             try
             {
-                if (users.Keys.Contains(id))
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+                //Create the table client.
+                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+                //Create the table if it doesn't exist.
+                CloudTable table = tableClient.GetTableReference("users");
+                TableOperation retrieveOperation = TableOperation.Retrieve<User>("USER", id);
+                TableResult retrieveResult = table.Execute(retrieveOperation);
+                User userToDelete = (User)retrieveResult.Result;
+                if (userToDelete != null)
                 {
-                    string name = users[id].Name;
-                    users.Remove(id);
-                    return "User " + name + " removed!";
+                    TableOperation deleteOperation = TableOperation.Delete(userToDelete);
+                    table.Execute(deleteOperation);
+                    return "User " + id + " was deleted!";
                 }
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 return "User not found!";
@@ -83,27 +100,31 @@ namespace REST_API
             catch (Exception e)
             {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message + " (" + id + ")";
+                return "ERROR - " + e.Message;
             }
         }
 
         public string AddGroup(string id)
         {
-            JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-
             try
             {
-                Group newGroup = json_serializer.Deserialize<Group>(getData(OperationContext.Current.RequestContext.RequestMessage));
-                if (!groups.Keys.Contains(id))
-                {
-                    groups.Add(id, newGroup);
-                    return "Added new group: " + newGroup.Name;
-                }
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "Group with id " + newGroup.Id + " already exists.";
+                JavaScriptSerializer json_serializer = new JavaScriptSerializer();
+                Group groupData = json_serializer.Deserialize<Group>(getCurrentMessageData());
+                Group newGroup = new Group(id, groupData.Name, groupData.Description);     
+                newGroup.Id = id;
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+                // Create the table client.
+                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+                // Create the table if it doesn't exist.
+                CloudTable table = tableClient.GetTableReference("groups");
+                // Build insert operation.
+                TableOperation insertOperation = TableOperation.Insert(newGroup);
+                // Execute the insert operation.
+                table.Execute(insertOperation);
+                return "Added new group: " + newGroup.Name;
             }
             catch (Exception e)
-            {                
+            {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 return "ERROR - " + e.Message;
             }
@@ -113,30 +134,39 @@ namespace REST_API
         {
             try
             {
-                if (groups.Keys.Contains(id))
-                {
-                    Group group = groups[id];
-                    return new JavaScriptSerializer().Serialize(group);
-                }
-                WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "Group not found!";
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+                //Create the table client.
+                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+                //Create the table if it doesn't exist.
+                CloudTable table = tableClient.GetTableReference("groups");
+                TableOperation getOp = TableOperation.Retrieve<Group>("GROUP", id);
+                Group group = (Group)table.Execute(getOp).Result;
+                return new JavaScriptSerializer().Serialize(group);
             }
             catch (Exception e)
             {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message + " (" + id + ")";
-            }         
+                return "ERROR - " + e.Message;
+            }                           
         }
 
         public string RemoveGroup(string id)
         {
             try
             {
-                if (groups.Keys.Contains(id))
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+                //Create the table client.
+                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+                //Create the table if it doesn't exist.
+                CloudTable table = tableClient.GetTableReference("groups");
+                TableOperation retrieveOperation = TableOperation.Retrieve<Group>("GROUP", id);
+                TableResult retrieveResult = table.Execute(retrieveOperation);
+                Group groupToDelete = (Group)retrieveResult.Result;
+                if (groupToDelete != null)
                 {
-                    string name = groups[id].Name;
-                    groups.Remove(id);
-                    return "Group " + name + " removed!";
+                    TableOperation deleteOperation = TableOperation.Delete(groupToDelete);
+                    table.Execute(deleteOperation);
+                    return "Group " + id + " was deleted!";
                 }
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 return "Group not found!";
@@ -144,7 +174,7 @@ namespace REST_API
             catch (Exception e)
             {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message + " (" + id + ")";
+                return "ERROR - " + e.Message;
             }
         }
     }

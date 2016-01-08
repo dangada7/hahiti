@@ -7,20 +7,22 @@ using System.Web;
 namespace REST_API
 {
     [DataContract]
-    public class User
+    public class User : Microsoft.WindowsAzure.Storage.Table.TableEntity
     {
         public User()
-        {
-
+        {            
         }
-        public User(string Id, string Username, string Name, string Email)
+        public User(string id, string username, string name, string email)
            
         {
-            this.Id = Id;
-            this.Username = Username;
-            this.Name = Name;
-            this.Email = Email;
+            PartitionKey = "USER";
+            RowKey = id;
+            this.Id = id;
+            this.Username = username;
+            this.Name = name;
+            this.Email = email;
         }
+
         public string Id { get; set; }
         public string Username { get; set; }
         public string Name { get; set; }
@@ -28,18 +30,19 @@ namespace REST_API
     }
 
     [DataContract]
-    public class Group
+    public class Group : Microsoft.WindowsAzure.Storage.Table.TableEntity
     {
         public Group()
         {
-
+    
         }
 
-        public Group(string Id, string Name, string Description)
+        public Group(string id, string name, string description)
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.Description = Description;
+            PartitionKey = "GROUP";
+            RowKey = id;
+            this.Name = name;
+            this.Description = description;
         }
 
 

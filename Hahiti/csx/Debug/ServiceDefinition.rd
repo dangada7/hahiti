@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Hahiti" generation="1" functional="0" release="0" Id="fa30597e-0c78-4b1f-9557-2fd2494a211f" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Hahiti" generation="1" functional="0" release="0" Id="2c9c2b87-8b4c-4919-b60f-f183a1e98b7e" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="HahitiGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -28,6 +28,11 @@
         <aCS name="Report AnalyzerInstances" defaultValue="[1,1,1]">
           <maps>
             <mapMoniker name="/Hahiti/HahitiGroup/MapReport AnalyzerInstances" />
+          </maps>
+        </aCS>
+        <aCS name="REST API:DataConnectionString" defaultValue="">
+          <maps>
+            <mapMoniker name="/Hahiti/HahitiGroup/MapREST API:DataConnectionString" />
           </maps>
         </aCS>
         <aCS name="REST API:Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" defaultValue="">
@@ -77,6 +82,11 @@
         <map name="MapReport AnalyzerInstances" kind="Identity">
           <setting>
             <sCSPolicyIDMoniker name="/Hahiti/HahitiGroup/Report AnalyzerInstances" />
+          </setting>
+        </map>
+        <map name="MapREST API:DataConnectionString" kind="Identity">
+          <setting>
+            <aCSMoniker name="/Hahiti/HahitiGroup/REST API/DataConnectionString" />
           </setting>
         </map>
         <map name="MapREST API:Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" kind="Identity">
@@ -141,6 +151,7 @@
               <inPort name="Endpoint1" protocol="http" portRanges="80" />
             </componentports>
             <settings>
+              <aCS name="DataConnectionString" defaultValue="" />
               <aCS name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" defaultValue="" />
               <aCS name="__ModelData" defaultValue="&lt;m role=&quot;REST API&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;Notifications Manager&quot; /&gt;&lt;r name=&quot;Report Analyzer&quot; /&gt;&lt;r name=&quot;REST API&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;/r&gt;&lt;r name=&quot;Statistics Collector&quot; /&gt;&lt;/m&gt;" />
             </settings>
@@ -190,9 +201,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="a14bba10-338d-4224-84af-b0c2e4d0477d" ref="Microsoft.RedDog.Contract\ServiceContract\HahitiContract@ServiceDefinition">
+    <implementation Id="d30101e8-bc75-4814-ad80-cec0ea2af14d" ref="Microsoft.RedDog.Contract\ServiceContract\HahitiContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="21bea6f0-7630-4db9-9368-41a10d091006" ref="Microsoft.RedDog.Contract\Interface\REST API:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="d5d6a376-e057-42d8-8336-72c0455c770c" ref="Microsoft.RedDog.Contract\Interface\REST API:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/Hahiti/HahitiGroup/REST API:Endpoint1" />
           </inPort>

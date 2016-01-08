@@ -10,9 +10,9 @@ namespace REST_API
     [ServiceContract]    
     public interface ServiceContract
     {
-        [WebInvoke(Method = "PUT", UriTemplate = "users/{data}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "PUT", UriTemplate = "users/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
-        string AddUser(string data);
+        string AddUser(string id);
 
         [WebInvoke(Method = "GET", UriTemplate = "users/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
@@ -22,9 +22,9 @@ namespace REST_API
         [OperationContract]
         string RemoveUser(string id);
         
-        [WebInvoke(Method = "PUT", UriTemplate = "groups/{data}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "PUT", UriTemplate = "groups/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
-        string AddGroup(string data);
+        string AddGroup(string id);
 
         [WebInvoke(Method = "GET", UriTemplate = "groups/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]

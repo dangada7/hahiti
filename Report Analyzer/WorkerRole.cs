@@ -63,8 +63,13 @@ namespace Report_Analyzer
             // TODO: Replace the following with your own logic.
             while (!cancellationToken.IsCancellationRequested)
             {
-                await Task.Delay(1000);
+                // Read from analysis queue
+                // Analyze report
             }
+        }
+
+        private void AnalyzeReport(string data){
+            // Do some work
         }
     }
 }

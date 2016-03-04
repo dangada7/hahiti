@@ -44,6 +44,29 @@ namespace REST_API
 
         [WebInvoke(Method = "DELETE", UriTemplate = "reports/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
-        string RemoveReport(string id);   
+        string RemoveReport(string id);
+
+        [WebInvoke(Method = "PUT", UriTemplate = "statistics/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string AddStatistic(string id);
+
+        [WebInvoke(Method = "GET", UriTemplate = "statistics/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string GetStatistic(string id);
+
+        [WebInvoke(Method = "DELETE", UriTemplate = "statistics/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string RemoveStatistic(string id);
+        [WebInvoke(Method = "PUT", UriTemplate = "students/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string AddStudent(string id);
+
+        [WebInvoke(Method = "GET", UriTemplate = "students/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string GetStudent(string id);
+
+        [WebInvoke(Method = "DELETE", UriTemplate = "students/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [OperationContract]
+        string RemoveStudent(string id);  
     }
 }

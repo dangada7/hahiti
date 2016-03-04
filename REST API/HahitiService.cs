@@ -60,17 +60,49 @@ namespace REST_API
 
         public string AddReport(string id)
         {
+            // TODO - add report id to report analyzer queue
             return CRUD.addData<Report>(id, "reports");
+
         }
 
         public string GetReport(string id)
         {
             return CRUD.getData<Report>(id, "reports");    
         }
-
+        
         public string RemoveReport(string id)
         {
             return CRUD.removeData<Report>(id, "reports");        
+        }
+        
+        public string AddStatistic(string id)
+        {
+            return CRUD.addData<Statistic>(id, "statistics");
+        }
+        
+        public string GetStatistic(string id)
+        {
+            return CRUD.getData<Statistic>(id, "statistics");
+        }
+        
+        public string RemoveStatistic(string id)
+        {
+            return CRUD.removeData<Statistic>(id, "statistics");
+        }
+
+        public string AddStudent(string id)
+        {
+            return CRUD.addData<Student>(id, "students");
+        }
+
+        public string GetStudent(string id)
+        {
+            return CRUD.getData<Student>(id, "students");
+        }
+
+        public string RemoveStudent(string id)
+        {
+            return CRUD.removeData<Student>(id, "students");
         }
     }
 

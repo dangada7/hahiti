@@ -20,6 +20,8 @@ namespace REST_API
             string USERS = "users";
             string GROUPS = "groups";
             string REPORTS = "reports";
+            string STATISTICS = "statistics";
+            string STUDENTS = "students";
 
             WebServiceHost host = new WebServiceHost(typeof(HahitiService), new Uri("http://localhost:8080/hahiti"));
             host.Open();
@@ -34,6 +36,10 @@ namespace REST_API
             CloudTable groupsTable = tableClient.GetTableReference(GROUPS);
             groupsTable.CreateIfNotExists();
             CloudTable reportsTable = tableClient.GetTableReference(REPORTS);
+            reportsTable.CreateIfNotExists();
+            CloudTable statisticsTable = tableClient.GetTableReference(STATISTICS);
+            reportsTable.CreateIfNotExists();
+            CloudTable studentsTable = tableClient.GetTableReference(STUDENTS);
             reportsTable.CreateIfNotExists();
 
 

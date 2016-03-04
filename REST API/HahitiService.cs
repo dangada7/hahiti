@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Queue;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections;
@@ -60,7 +61,15 @@ namespace REST_API
 
         public string AddReport(string id)
         {
-            // TODO - add report id to report analyzer queue
+            // initialize the account information
+            CloudStorageAccount storageAccount =
+            CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+            // retrieve a reference to the messages queue
+            var queueClient = storageAccount.CreateCloudQueueClient();
+            var queue = queueClient.GetQueueReference("analysis");
+            queue.CreateIfNotExists(null);
+            var msg = new CloudQueueMessage(id);
+            queue.AddMessage(msg);
             return CRUD.addData<Report>(id, "reports");
 
         }
@@ -158,7 +167,7 @@ namespace REST_API
             catch (Exception e)
             {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message;
+                return new ServiceError().throwError(e);
             }
         }
 
@@ -186,7 +195,7 @@ namespace REST_API
             catch (Exception e)
             {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message;
+                return new ServiceError().throwError(e);
             }    
         }
 
@@ -214,7 +223,7 @@ namespace REST_API
             catch (Exception e)
             {
                 WebOperationContext.Current.OutgoingResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                return "ERROR - " + e.Message;
+                return new ServiceError().throwError(e);
             }
         }
 

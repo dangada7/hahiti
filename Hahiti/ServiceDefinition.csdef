@@ -24,6 +24,7 @@
   <WorkerRole name="Report Analyzer" vmsize="Small">
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+      <Setting name="DataConnectionString" />
     </ConfigurationSettings>
   </WorkerRole>
   <WorkerRole name="Notifications Manager" vmsize="Small">

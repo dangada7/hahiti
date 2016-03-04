@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.ServiceModel.Web;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace REST_API
 {   
@@ -22,6 +23,7 @@ namespace REST_API
             string REPORTS = "reports";
             string STATISTICS = "statistics";
             string STUDENTS = "students";
+            string ANALYSIS_QUEUE = "analysis";
 
             WebServiceHost host = new WebServiceHost(typeof(HahitiService), new Uri("http://localhost:8080/hahiti"));
             host.Open();
@@ -38,9 +40,14 @@ namespace REST_API
             CloudTable reportsTable = tableClient.GetTableReference(REPORTS);
             reportsTable.CreateIfNotExists();
             CloudTable statisticsTable = tableClient.GetTableReference(STATISTICS);
-            reportsTable.CreateIfNotExists();
+            statisticsTable.CreateIfNotExists();
             CloudTable studentsTable = tableClient.GetTableReference(STUDENTS);
-            reportsTable.CreateIfNotExists();
+            studentsTable.CreateIfNotExists();
+
+            // Create Queues
+            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+            CloudQueue analysisQueue = queueClient.GetQueueReference(ANALYSIS_QUEUE);
+            analysisQueue.CreateIfNotExists();
 
 
             return base.OnStart();

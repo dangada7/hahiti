@@ -26,7 +26,7 @@ var getuser1 = function(){
 		dataType: "jsonp", 
 	   	success: function(data) {
 	   		console.log('success',data);
-	   		alert(data);
+	   		alert("success" + data);
 	   	},
 	   	error: function (ajaxContext) {
         	alert(ajaxContext.responseText)

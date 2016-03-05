@@ -4,5 +4,8 @@ $(document).ready(function(){
 	 addUser();
   });
 
+  $("#getuser1").click(function(){
+	 getuser1();
+  });
 
 });

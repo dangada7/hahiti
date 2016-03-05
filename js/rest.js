@@ -20,8 +20,8 @@ var addUser = function(){
 var getuser1 = function(){
 	alert("add user");
 	$.ajax({
-	   	url: 'http://requestb.in/1n07sbo1',
-	   	//url:'http://localhost:8080/hahiti/users/3',
+	   	//url: 'http://requestb.in/1n07sbo1',
+	   	url:'http://localhost:8080/hahiti/users/3',
 	   	method : "GET",
 		dataType: "jsonp", 
 	   	success: function(data) {

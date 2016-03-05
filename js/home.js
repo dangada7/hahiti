@@ -5,9 +5,4 @@ $(document).ready(function(){
   });
 
 
-  // $("#adduser").click(function(){
-	 // addGroup();
-  // });
-
-
 });

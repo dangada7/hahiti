@@ -1,7 +1,13 @@
 $(document).ready(function(){
 
-  $("#button").click(function(){
-  	
+  $("#adduser").click(function(){
 	 addUser();
   });
+
+
+  // $("#adduser").click(function(){
+	 // addGroup();
+  // });
+
+
 });

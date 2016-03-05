@@ -3,7 +3,7 @@
 var addUser = function(){
 	alert("add user");
 	$.ajax({
-		type: 'GET',
+		type: 'PUT',
 	   	url: 'http://requestb.in/1mt9rms1?inspect',
 	   	data: {
       		format: 'json',
@@ -19,5 +19,4 @@ var addUser = function(){
 	   	}
 	});
 };
-
 

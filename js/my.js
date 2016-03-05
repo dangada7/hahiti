@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+  alert("ble")
   var i=1;
 
   $("#add_row").click(function(){
@@ -12,6 +14,7 @@ $(document).ready(function(){
 		  $("#addr"+(i-1)).html('');
 		  i--;
 		}
+
 	});
 
 });

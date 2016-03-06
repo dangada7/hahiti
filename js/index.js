@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+	
+	var loginFunc = function(userName){
+	   	sessionStorage.setItem("username",userName);
+	   	window.location.replace("home.html");
+	} 
+
 	$("#signup_form").submit(function(event){
 	
 		// Stop form from submitting normally
@@ -10,8 +16,10 @@ $(document).ready(function(){
 		var username = $("#inputUser").val();
 		var password = $("#inputPassword").val();
 
-		signup(username,password,name,email);
+		sendSignupRequest(username,password,name,email,loginFunc);
 	});
+
+
 
 	$("#signin_form").submit(function(){
 		// Stop form from submitting normally
@@ -20,7 +28,7 @@ $(document).ready(function(){
 		var username = $("#signin_inputUser").val();
 		var password = $("#signin_inputPassword").val();
 
-		signin(username,password);
+		sendSigninRequest(username,password,loginFunc);
 
 	});
 

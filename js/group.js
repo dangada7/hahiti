@@ -11,7 +11,7 @@ $(document).ready(function(){
   $("#note").html(GroupNotes);
 
   //add one student
-  var addStudent = function(groupName, groupNotes){
+  var addStudentFunc = function(groupName, groupNotes){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td class="groupName'+i+'" >' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
@@ -21,27 +21,28 @@ $(document).ready(function(){
 
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
-    };
+  };
 
   //add all the students in data (json) 
-  var addStudents = function(data){
+  var addStudentsFunc = function(data){
       var students = jQuery.parseJSON(data);
-
       var j;
       //Name, Phone, Email, Id
       for (j = 0; j < students.length; j++) {
-         addStudent(students[j].Name,students[j].Phone);
+         addStudentFunc(students[j].Name,students[j].Phone);
       }
   }
 
-  sendGetAllStudentRequest(groupID,addStudents);
-  //getAndAddStudents(groupID,addStudent);
+  sendGetAllStudentRequest(groupID,addStudentsFunc);
 
-  // add functionality to buttons
+  // add new student
   $("#add_row").click(function(){
-    var groupName =$("#group_input").val();
-    var groupNotes =$("#note_input").val();
-    addStudent(groupName,groupNotes);
+    var studentName  = $("#student_input").val();
+    var studentNotes = $("#note_input").val();
+    $("#group_input").val("");
+    $("#group_input").val("");
+
+    //sendAddNewStudentRequest(studentName,studentNotes, addStudentFunc);
   });
 
   $("#delete_row").click(function(){

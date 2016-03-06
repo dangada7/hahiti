@@ -1,5 +1,5 @@
 
-var signup = function(userName, password, name, email){
+var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	console.log(userName, password, name, email);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 
@@ -8,7 +8,8 @@ var signup = function(userName, password, name, email){
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"'+defualtSetting+'"}',
 	   	success: function(data) {
-	   		console.log('success',data);
+	   		console.log('success signup',userName,data);
+	   		loginFunc(userName);
 	   	},
 	   	error: function (ajaxContext) {
         	alert(ajaxContext.responseText)
@@ -17,9 +18,7 @@ var signup = function(userName, password, name, email){
 };
 
 
-
-
-var signin = function(userName, password){
+var sendSigninRequest = function(userName, password, loginFunc){
 	console.log(userName, password);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 	$.ajax({
@@ -27,12 +26,8 @@ var signin = function(userName, password){
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
-	   		console.log('success',data,userName);
-
-	   		sessionStorage.setItem("data",data);
-	   		sessionStorage.setItem("username",userName);
-
-	   		window.location.replace("home.html");
+	   		console.log('success login',userName,data);
+			loginFunc(userName);
 	   	},
 	   	error: function (ajaxContext) {
         	alert(ajaxContext.responseText)

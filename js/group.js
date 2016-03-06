@@ -13,10 +13,15 @@ $(document).ready(function(){
   //add one student
   var addStudentFunc = function(studentId,studentName,studentPhone,studentEmail, present, late, missing ){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
-                        '<td class="groupName'+i+'" >' + studentId + '</td>' + 
+                        '<td>' + studentId + '</td>' + 
                         '<td>' + studentName + '</td>' +
-                        '<td> <a href="#" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
-                             '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>');
+                        '<td>' + studentPhone + '</td>' +
+                        '<td>' + studentEmail + '</td>' +
+                        '<td>' + present + '</td>' +
+                        '<td>' + late + '</td>' +
+                        '<td>' + missing + '</td>'
+                        );
+
 
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
@@ -31,7 +36,7 @@ $(document).ready(function(){
          addStudentFunc(students[j].Id, students[j].Name, students[j].Phone, students[j].Email, students[j].Present, students[j].Late, students[j].Missing);
       }
   }
-  
+
   sendGetAllStudentRequest(groupID,addStudentsFunc);
 
   // add new student

@@ -27,14 +27,20 @@ $(document).ready(function(){
       i++; 
     };
 
-  //set all the groups
-  var data = sessionStorage.getItem("data");
-  var groups = jQuery.parseJSON(data);
-  if(groups!=null){
-    for (j = 0; j < groups.length; j++) {
-       addGroupFunc(groups[j].Name,groups[j].Description,groups[j].Id);
-    }
-  }
+
+  var addGroupsFunc = function(data){
+     //set all the groups
+      var groups = jQuery.parseJSON(data);
+      if(groups!=null){
+        for (j = 0; j < groups.length; j++) {
+           addGroupFunc(groups[j].Name,groups[j].Description,groups[j].Id);
+        }
+      }
+  };
+
+  sendGetAllGroupsRequest(userName, addGroupsFunc);
+
+ 
 
   // try to add new group
   $("#add_row").click(function(){

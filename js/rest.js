@@ -17,7 +17,6 @@ var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	});
 };
 
-
 var sendSigninRequest = function(userName, password, loginFunc){
 	console.log(userName, password);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
@@ -34,7 +33,6 @@ var sendSigninRequest = function(userName, password, loginFunc){
   		}
 	});
 };
-
 
 var sendGetAllStudentRequest = function(groupID,addStudents){
 	console.log("send get all student request",groupID);
@@ -67,3 +65,19 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 	});
 
 }
+
+
+ var sendGetAllGroupsRequest = function(userName, addGroupsFunc){
+	console.log("send get all groups request",userName);
+	$.ajax({
+	  	url:'http://localhost:8080/hahiti/allGroups/'+userName,
+	   	method : "GET",
+	   	success: function(data) {
+	   		console.log('success',userName,data);
+			addGroupsFunc(data);	   		
+	   	},
+	   	error: function (ajaxContext) {
+        	alert(ajaxContext.responseText)
+  		}
+	});
+ }

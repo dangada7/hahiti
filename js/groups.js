@@ -4,7 +4,12 @@
     sessionStorage.setItem("groupNotes",groupNotes);
     sessionStorage.setItem("groupID",groupID);
     window.location.replace("group.html");
-}
+};
+
+
+var refreshTable = function(groupID){
+   window.location.replace("groups.html");
+};
 
 $(document).ready(function(){
  
@@ -26,7 +31,7 @@ $(document).ready(function(){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td class="groupName'+i+'" >' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
-                        '<td> <a href="#" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
+                        '<td> <a onclick="SendDeleteGroup('+groupID+','+refreshTable+')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
                              '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
                              '<a onclick="goToGroupPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 

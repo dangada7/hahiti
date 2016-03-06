@@ -98,3 +98,19 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 	});
 
  }
+
+ var SendDeleteGroupRequest = function(groupID, refreshTable){
+ 	console.log("send delete group request",groupID);
+	$.ajax({
+	  	url:'http://localhost:8080/hahiti/groups/'+groupID,
+	   	method : "DELETE",
+	   	success: function(data) {
+	   		console.log('success',groupID,data);
+  			refreshTable();
+	   	},
+	   	error: function (ajaxContext) {
+        	alert(ajaxContext.responseText)
+  		}
+	});
+
+ }

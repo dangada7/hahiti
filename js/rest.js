@@ -19,7 +19,7 @@ var signup = function(userName, password, name, email){
 
 
 // Id, Name, Description, Students, 
-var parseSignin = function(dat){
+var parseSignin = function(data){
 	var groups = jQuery.parseJSON(data);
 	sessionStorage.setItem("Groups",groups);
 	alert("parsejson");	

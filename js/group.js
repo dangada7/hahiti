@@ -31,7 +31,7 @@ $(document).ready(function(){
          addStudentFunc(students[j].Id, students[j].Name, students[j].Phone, students[j].Email, students[j].Present, students[j].Late, students[j].Missing);
       }
   }
-
+  
   sendGetAllStudentRequest(groupID,addStudentsFunc);
 
   // add new student

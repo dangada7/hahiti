@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 	$("#title").html("Welcome to Hahiti, " + userName);
 	
-	$("#logoutButton").onClick( function(){
+	$("#logoutButton").click( function(){
 		alert("logout");
 	});
 

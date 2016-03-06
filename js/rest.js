@@ -5,6 +5,7 @@ var addUser = function(userName, password, name, email){
 	alert("add user");
 	$.ajax({
 	  	url:'http://localhost:8080/hahiti/users/3',
+	  	//url:'http://requestb.in/1hbp2f91',
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"'+defualtSetting+'"}',
 	   	success: function(data) {

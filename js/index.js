@@ -7,12 +7,17 @@ $(document).ready(function(){
 	});
 
 
-	$("#signup_form").submit(function(){
-		alert("signup_form");
+	$("#signup_form").submit(function(event){
+	
+		// Stop form from submitting normally
+		event.preventDefault();
+		 
 		var name = $("#inputName").val();
 		var email = $("#inputEmail").val();
 		var username = $("#inputUser").val();
 		var password = $("#inputPassword").val();
+
+
 
 		addUser(username,password,name,email);
 	});

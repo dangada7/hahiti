@@ -5,7 +5,6 @@ var signup = function(userName, password, name, email){
 
 	$.ajax({
 	  	url:'http://localhost:8080/hahiti/users',
-	  	//url:'http://requestb.in/1hbp2f91',
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"'+defualtSetting+'"}',
 	   	success: function(data) {
@@ -25,7 +24,6 @@ var signin = function(userName, password){
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 	$.ajax({
 	  	url:'http://localhost:8080/hahiti/login',
-	  	//url:'http://requestb.in/1hbp2f91',
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
@@ -42,17 +40,14 @@ var signin = function(userName, password){
 	});
 };
 
-
 var getStudents = function(groupID){
 	console.log("getStudents",groupID);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 	$.ajax({
 	  	url:'http://localhost:8080/hahiti/allStudents/'+groupID,
-	  	//url:'http://requestb.in/1hbp2f91',
 	   	method : "GET",
 	   	success: function(data) {
 	   		console.log('success',data,groupID);
-
 			return data;	   		
 	   	},
 	   	error: function (ajaxContext) {

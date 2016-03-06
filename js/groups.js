@@ -16,7 +16,7 @@ $(document).ready(function(){
                         '<td>' + groupNotes + '</td>' +
                         '<td> <a href="#" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
                              '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
-                             '<a onclick="goToGroupPage(\'123\',\'123\',\'123\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
+                             '<a onclick="goToGroupPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 

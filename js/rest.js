@@ -17,6 +17,18 @@ var signup = function(userName, password, name, email){
 };
 
 
+// Id, Name, Description, Students, 
+var parseSignin = function(data){
+	var obj = jQuery.parseJSON(data);
+	for(i=0; i < obj.length; i++){
+		console.log('Id',obj[i].Id);
+		console.log('Name',obj[i].Name);
+		console.log('Description',obj[i].Description);
+		console.log('Students',obj[i].Students);
+	}
+};
+
+
 var signin = function(userName, password){
 	console.log(userName, password);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
@@ -35,12 +47,4 @@ var signin = function(userName, password){
 };
 
 
-var test = function(){
-	// For cross-origin requests, some simple logic
-	// to determine if XDomainReqeust is needed.
- 	var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "http://requestb.in/1n07sbo1?inspect", false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
 
-}

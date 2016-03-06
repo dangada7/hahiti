@@ -63,7 +63,7 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 	   	method : "POST",
 	   	data : '{"Name":"'+groupName+'","Description":"'+groupNotes+'","Owner":"'+userName+'"}',
 	   	success: function(data) {
-	   		console.log('success',data,groupID);
+	   		console.log('success',data,groupName,groupNotes);
 	   		addGroupFunc(groupName,groupNotes);
 	   	},
 	   	error: function (ajaxContext) {

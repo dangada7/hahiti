@@ -10,7 +10,6 @@ $(document).ready(function(){
 		var username = $("#inputUser").val();
 		var password = $("#inputPassword").val();
 
-
 		signup(username,password,name,email);
 	});
 

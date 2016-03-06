@@ -16,12 +16,15 @@ var signup = function(userName, password, name, email){
 	});
 };
 
+var groups = {}; 
+
 
 // Id, Name, Description, Students, 
 var parseSignin = function(data, userName){
 	var obj = jQuery.parseJSON(data);
+	groups = obj;
 	console.log('userName',userName);
-	
+
 	for(i=0; i < obj.length; i++){
 		console.log('Id',obj[i].Id);
 		console.log('Name',obj[i].Name);

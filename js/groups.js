@@ -13,14 +13,9 @@ $(document).ready(function(){
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
     };
-
-
-  //add groups that exists
-  var Groups = [["group1","note1"],["group2","note2"],["group3","note3"]];
-
-  var j;
-  for (j = 0; j < Groups.length; j++) {
-     addGroup(Groups[j][0],Groups[j][1]);
+    
+  for (j = 0; j < groups.length; j++) {
+     addGroup(groups[i].Name,groups[i].Description);
   }
 
 

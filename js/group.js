@@ -35,7 +35,7 @@ $(document).ready(function(){
   var j;
   //Name, Phone, Email, Id
   for (j = 0; j < students.length; j++) {
-     addGroup(students[i].Name,students[i].Phone);
+     addGroup(students[j].Name,students[j].Phone);
   }
 
 

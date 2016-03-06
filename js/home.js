@@ -7,12 +7,12 @@ $(document).ready(function(){
 	}else{
 		$("#logoutButton").hide();
 	}
-
-	$("#title").html("Welcome to Hahiti, " + userName);
 	
 	$("#logoutButton").click( function(){
 		alert("logout");
+		sessionStorage.setItem('username',null);
 	});
 
+	$("#title").html("Welcome to Hahiti, " + userName);
 
 });

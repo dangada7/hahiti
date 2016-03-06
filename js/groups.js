@@ -11,7 +11,15 @@ $(document).ready(function(){
   var userName = sessionStorage.getItem('username');
   if(userName!=null){
     $("#loginButton").hide();
+    $("#signinButton").hide();
+  }else{
+    $("#logoutButton").hide();
   }
+  
+  $("#logoutButton").click( function(){
+    alert("logout");
+    sessionStorage.setItem('username',null);
+  });
 
   var i=1;
 
@@ -37,8 +45,9 @@ $(document).ready(function(){
         }
       }
   };
-
-  sendGetAllGroupsRequest(userName, addGroupsFunc);
+  
+  if(userName!=null)
+    sendGetAllGroupsRequest(userName, addGroupsFunc);
 
  
 

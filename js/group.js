@@ -1,6 +1,20 @@
 $(document).ready(function(){
  
+  //bla bla
+  var userName = sessionStorage.getItem('username');
+  if(userName!=null){
+    $("#loginButton").hide();
+    $("#signinButton").hide();
+  }else{
+    $("#logoutButton").hide();
+  }
+  
+  $("#logoutButton").click( function(){
+    alert("logout");
+    sessionStorage.setItem('username',null);
+  });
 
+  // bla bla 2
   var groupName = sessionStorage.getItem("groupName");
   var GroupNotes = sessionStorage.getItem("groupNotes");
   var groupID   = sessionStorage.getItem("groupID");
@@ -30,7 +44,7 @@ $(document).ready(function(){
   var addStudentsFunc = function(data){
       var students = jQuery.parseJSON(data);
       var j;
-      //Name, Phone, Email, Id
+
       for (j = 0; j < students.length; j++) {
          addStudentFunc(students[j].Id, students[j].Name, students[j].Phone, students[j].Email, students[j].Present, students[j].Late, students[j].Missing);
       }

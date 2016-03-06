@@ -22,7 +22,6 @@ $(document).ready(function(){
                         '<td>' + missing + '</td>'
                         );
 
-
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
   };

@@ -13,10 +13,13 @@ $(document).ready(function(){
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
     };
-    
-  for (j = 0; j < groups.length; j++) {
-     addGroup(groups[i].Name,groups[i].Description);
-  }
+
+  groups = sessionStorage.getItem("Groups");
+ 
+  if(groups!=null)
+    for (j = 0; j < groups.length; j++) {
+       addGroup(groups[j].Name,groups[j].Description);
+    }
 
 
   // add functionality to buttons

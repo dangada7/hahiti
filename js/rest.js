@@ -17,19 +17,11 @@ var signup = function(userName, password, name, email){
 	});
 };
 
-var groups = {}; 
 
 // Id, Name, Description, Students, 
 var parseSignin = function(dat){
-	var obj = jQuery.parseJSON(data);
-	groups = obj;
-
-	for(i=0; i < obj.length; i++){
-		console.log('Id',obj[i].Id);
-		console.log('Name',obj[i].Name);
-		console.log('Description',obj[i].Description);
-		console.log('Students',obj[i].Students);
-	}
+	var groups = jQuery.parseJSON(data);
+	sessionStorage.setItem("Groups",groups);	
 };
 
 

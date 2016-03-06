@@ -42,7 +42,7 @@ var signin = function(userName, password){
 
 var AddStudents  = function(data,addStudent){
   var students = jQuery.parseJSON(data);
-	alert("AddStudents=" + data);
+  
   var j;
   //Name, Phone, Email, Id
   for (j = 0; j < students.length; j++) {

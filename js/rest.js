@@ -41,7 +41,6 @@ var signin = function(userName, password){
 };
 
 
-
 var sendGetAllStudentRequest = function(groupID,addStudents){
 	console.log("send get all student request",groupID);
 	$.ajax({
@@ -57,11 +56,10 @@ var sendGetAllStudentRequest = function(groupID,addStudents){
 	});
 };
 
-
 var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 	console.log("send add new group request",groupName, groupNotes, userName, addGroupFunc);
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/groups/',
+	  	url:'http://localhost:8080/hahiti/groups',
 	   	method : "POST",
 	   	data : '{"Name":"'+groupName+'","Description":"'+groupNotes+'","Owner":"'+userName+'"}',
 	   	success: function(data) {

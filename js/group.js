@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 
   var data = getStudents(groupID);
-  alert(data);
+  alert("group.js="+data);
   var students = jQuery.parseJSON(data);
 
   alert(students);

@@ -7,7 +7,7 @@
 };
 
 
-var refreshTable = function(groupID){
+var refreshTable = function(){
    window.location.replace("groups.html");
 };
 

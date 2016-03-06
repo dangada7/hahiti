@@ -1,7 +1,4 @@
 
-var UserName = "not login";
-
-
 var signup = function(userName, password, name, email){
 	console.log(userName, password, name, email);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
@@ -51,7 +48,7 @@ var signin = function(userName, password){
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
 	   		console.log('success',data);
-	   		UserName = userName;
+	   		sessionStorage.setItem("username",userName);
 	   		window.location.replace("home.html");
 	   		parseSignin(data)
 	   	},

@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
-	alert("username:" + UserName);
+	var userName = sessionStorage.getItem('username');
+
+	alert("username:" + userName);
 
 });

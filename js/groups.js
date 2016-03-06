@@ -1,14 +1,22 @@
+ 
+ var goToGroupPage = function(groupName,groupNotes,groupID){
+    sessionStorage.setItem("groupName",groupName);
+    sessionStorage.setItem("groupNotes",groupNotes);
+    sessionStorage.setItem("groupID",groupID);
+    window.location.replace("group.html");
+}
+
 $(document).ready(function(){
  
   var i=1;
 
-  var addGroup = function(groupName, groupNotes){
+  var addGroup = function(groupName, groupNotes, groupID){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td class="groupName'+i+'" >' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
                         '<td> <a href="#" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
                              '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
-                             '<a href="' + 'group.html?'+'groupName='+groupName+'&groupNote='+ groupNotes +'" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
+                             '<a onclick="goToGroupPage(\'123\',\'123\',\'123\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
@@ -20,7 +28,7 @@ $(document).ready(function(){
 
   if(groups!=null)
     for (j = 0; j < groups.length; j++) {
-       addGroup(groups[j].Name,groups[j].Description);
+       addGroup(groups[j].Name,groups[j].Description,groups[j].Id);
     }
 
 
@@ -38,9 +46,6 @@ $(document).ready(function(){
 		}
 	});
 
-
-
-
-
+ 
 
 });

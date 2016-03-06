@@ -1,16 +1,18 @@
 $(document).ready(function(){
  
+
+  var groupName = sessionStorage.getItem("groupName");
+  var GroupNotes = sessionStorage.getItem("groupNotes");
+  var groupID   = sessionStorage.getItem("groupID");
+
+  
+
+
+
   var i=1;
 
-  //set title
-  var query = window.location.search;
-  query = query.split("&");
-
-  var groupName = query[0].split("=")[1];
-  var groupNote = query[1].split("=")[1];
-
   $("#title").html(groupName);
-  $("#note").html(groupNote);
+  $("#note").html(GroupNotes);
 
   var addGroup = function(groupName, groupNotes){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
@@ -28,9 +30,14 @@ $(document).ready(function(){
   //add groups that exists
   var Groups = [["student1","note1"],["student2","note2"]];
 
+
+  var data = getStudents(groupID);
+  var students = jQuery.parseJSON(data);
+
   var j;
-  for (j = 0; j < Groups.length; j++) {
-     addGroup(Groups[j][0],Groups[j][1]);
+  //Name, Phone, Email, Id
+  for (j = 0; j < students.length; j++) {
+     addGroup(students[i].Name,students[i].Phone);
   }
 
 
@@ -38,7 +45,7 @@ $(document).ready(function(){
   $("#add_row").click(function(){
     var groupName =$("#group_input").val();
     var groupNotes =$("#note_input").val();
-    addGroup(groupName,groupNotes)
+    addGroup(groupName,groupNotes);
   });
 
   $("#delete_row").click(function(){

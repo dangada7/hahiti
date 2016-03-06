@@ -1,3 +1,7 @@
+
+var UserName = "not login";
+
+
 var signup = function(userName, password, name, email){
 	console.log(userName, password, name, email);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
@@ -18,12 +22,10 @@ var signup = function(userName, password, name, email){
 
 var groups = {}; 
 
-
 // Id, Name, Description, Students, 
-var parseSignin = function(data, userName){
+var parseSignin = function(dat){
 	var obj = jQuery.parseJSON(data);
 	groups = obj;
-	console.log('userName',userName);
 
 	for(i=0; i < obj.length; i++){
 		console.log('Id',obj[i].Id);
@@ -32,6 +34,11 @@ var parseSignin = function(data, userName){
 		console.log('Students',obj[i].Students);
 	}
 };
+
+
+
+
+
 
 
 var signin = function(userName, password){
@@ -44,7 +51,9 @@ var signin = function(userName, password){
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
 	   		console.log('success',data);
-	   		parseSignin(data, userName)
+	   		UserName = userName;
+	   		window.location.replace("home.html");
+	   		parseSignin(data)
 	   	},
 	   	error: function (ajaxContext) {
         	alert(ajaxContext.responseText)

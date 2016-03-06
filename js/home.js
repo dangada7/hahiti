@@ -8,4 +8,8 @@ $(document).ready(function(){
 	 getuser1();
   });
 
+  $("#test").click(function(){
+	 test();
+  });
+
 });

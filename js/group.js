@@ -11,13 +11,12 @@ $(document).ready(function(){
   $("#note").html(GroupNotes);
 
   //add one student
-  var addStudentFunc = function(groupName, groupNotes){
+  var addStudentFunc = function(studentId,studentName,studentPhone,studentEmail, present, late, missing ){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
-                        '<td class="groupName'+i+'" >' + groupName + '</td>' + 
-                        '<td>' + groupNotes + '</td>' +
+                        '<td class="groupName'+i+'" >' + studentId + '</td>' + 
+                        '<td>' + studentName + '</td>' +
                         '<td> <a href="#" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
-                             '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
-                             '<a href="' + 'group.html?'+ 'groupName=' + groupName +'" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
+                             '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>');
 
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
@@ -29,7 +28,7 @@ $(document).ready(function(){
       var j;
       //Name, Phone, Email, Id
       for (j = 0; j < students.length; j++) {
-         addStudentFunc(students[j].Name,students[j].Phone);
+         addStudentFunc(students[j].Id, students[j].Name, students[j].Phone, students[j].Email, students[j].Present, students[j].Late, students[j].Missing);
       }
   }
 
@@ -37,12 +36,17 @@ $(document).ready(function(){
 
   // add new student
   $("#add_row").click(function(){
-    var studentName  = $("#student_input").val();
-    var studentNotes = $("#note_input").val();
-    $("#group_input").val("");
-    $("#group_input").val("");
+    var studentId  = $("#student_id_input").val();
+    var studentName  = $("#student_name_input").val();
+    var studentPhone  = $("#student_phone_input").val();
+    var studentEmail  = $("#student_email_input").val();
+    
+    $("#student_id_input").val("");
+    $("#student_name_input").val("");
+    $("#student_phone_input").val("");
+    $("#student_email_input").val("");
 
-    //sendAddNewStudentRequest(studentName,studentNotes, addStudentFunc);
+    sendAddNewStudentRequest(studentId,studentName,studentPhone,studentEmail,groupID, addStudentFunc);
   });
 
   $("#delete_row").click(function(){

@@ -1,10 +1,9 @@
-var addUser = function(userName, password, name, email){
+var signup = function(userName, password, name, email){
 	console.log(userName, password, name, email);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 
-	alert("add user");
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/users/3',
+	  	url:'http://localhost:8080/hahiti/users',
 	  	//url:'http://requestb.in/1hbp2f91',
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"'+defualtSetting+'"}',
@@ -17,16 +16,17 @@ var addUser = function(userName, password, name, email){
 	});
 };
 
-var getuser1 = function(){
-	alert("add user");
+
+var signin = function(userName, password){
+	console.log(userName, password);
+	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 	$.ajax({
-	   	url: 'http://requestb.in/1n07sbo1',
-	   	//url:'http://localhost:8080/hahiti/users/3',
-	   	method : "GET",
-		dataType: "json", 
+	  	url:'http://localhost:8080/hahiti/login',
+	  	//url:'http://requestb.in/1hbp2f91',
+	   	method : "POST",
+	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
 	   		console.log('success',data);
-	   		alert("success" + data);
 	   	},
 	   	error: function (ajaxContext) {
         	alert(ajaxContext.responseText)

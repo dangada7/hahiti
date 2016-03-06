@@ -1,12 +1,5 @@
 $(document).ready(function(){
 
-	$("#signinForm").submit(function(){
-		alert("tnx man");
-		$(location).attr('href', 'home.html');
-		alert("tnx man");
-	});
-
-
 	$("#signup_form").submit(function(event){
 	
 		// Stop form from submitting normally
@@ -18,8 +11,18 @@ $(document).ready(function(){
 		var password = $("#inputPassword").val();
 
 
+		signup(username,password,name,email);
+	});
 
-		addUser(username,password,name,email);
+	$("#signin_form").submit(function(){
+		// Stop form from submitting normally
+		event.preventDefault();
+		 
+		var username = $("#signin_inputUser").val();
+		var password = $("#signin_inputPassword").val();
+
+		signin(username,password);
+
 	});
 
 });

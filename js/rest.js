@@ -48,6 +48,7 @@ var getStudents = function(groupID){
 	   	method : "GET",
 	   	success: function(data) {
 	   		console.log('success',data,groupID);
+	   		alert(data);
 			return data;	   		
 	   	},
 	   	error: function (ajaxContext) {

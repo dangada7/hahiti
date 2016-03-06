@@ -12,8 +12,7 @@ $(document).ready(function(){
   }
   
   $("#logoutButton").click( function(){
-    alert("logout");
-    sessionStorage.setItem('username',null);
+    sessionStorage.removeItem('username');
   });
 
   var i=1;

@@ -8,9 +8,14 @@
 
 $(document).ready(function(){
  
+  var userName = sessionStorage.getItem('username');
+  if(userName!=null){
+    $("#loginButton").hide();
+  }
+
   var i=1;
 
-  var addGroup = function(groupName, groupNotes, groupID){
+  var addGroupFunc = function(groupName, groupNotes, groupID){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td class="groupName'+i+'" >' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
@@ -22,21 +27,23 @@ $(document).ready(function(){
       i++; 
     };
 
+  //set all the groups
   var data = sessionStorage.getItem("data");
- 
   var groups = jQuery.parseJSON(data);
-
-  if(groups!=null)
+  if(groups!=null){
     for (j = 0; j < groups.length; j++) {
-       addGroup(groups[j].Name,groups[j].Description,groups[j].Id);
+       addGroupFunc(groups[j].Name,groups[j].Description,groups[j].Id);
     }
+  }
 
-
-  // add functionality to buttons
+  // try to add new group
   $("#add_row").click(function(){
-    var groupName =$("#group_input").val();
-    var groupNotes =$("#note_input").val();
-    addGroup(groupName,groupNotes)
+    var groupName  = $("#group_input").val();
+    var groupNotes = $("#note_input").val();
+    $("#group_input").val("");
+    $("#note_input").val("");
+
+    sendAddGroupRequest(groupName,groupNotes,userName, addGroupFunc);
   });
 
   $("#delete_row").click(function(){

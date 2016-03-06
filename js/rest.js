@@ -40,29 +40,37 @@ var signin = function(userName, password){
 	});
 };
 
-var AddStudents  = function(data,addStudent){
-  var students = jQuery.parseJSON(data);
-  
-  var j;
-  //Name, Phone, Email, Id
-  for (j = 0; j < students.length; j++) {
-     addStudent(students[j].Name,students[j].Phone);
-  }
-}
 
 
-var getAndAddStudents = function(groupID,addStudent){
-	console.log("getStudents",groupID);
-	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
+var sendGetAllStudentRequest = function(groupID,addStudents){
+	console.log("send get all student request",groupID);
 	$.ajax({
 	  	url:'http://localhost:8080/hahiti/allStudents/'+groupID,
 	   	method : "GET",
 	   	success: function(data) {
 	   		console.log('success',data,groupID);
-			AddStudents(data,addStudent);	   		
+			addStudents(data);	   		
 	   	},
 	   	error: function (ajaxContext) {
         	alert(ajaxContext.responseText)
   		}
 	});
 };
+
+
+var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
+	console.log("send add new group request",groupName, groupNotes, userName, addGroupFunc);
+	$.ajax({
+	  	url:'http://localhost:8080/hahiti/groups/',
+	   	method : "POST",
+	   	data : '{"Name":"'+groupName+'","Description":"'+groupNotes+'","Owner":"'+userName+'"}',
+	   	success: function(data) {
+	   		console.log('success',data,groupID);
+	   		addGroupFunc(groupName,groupNotes);
+	   	},
+	   	error: function (ajaxContext) {
+        	alert(ajaxContext.responseText)
+  		}
+	});
+
+}

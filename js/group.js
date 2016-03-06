@@ -10,6 +10,7 @@ $(document).ready(function(){
   $("#title").html(groupName);
   $("#note").html(GroupNotes);
 
+  //add one student
   var addStudent = function(groupName, groupNotes){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td class="groupName'+i+'" >' + groupName + '</td>' + 
@@ -22,19 +23,25 @@ $(document).ready(function(){
       i++; 
     };
 
+  //add all the students in data (json) 
+  var addStudents = function(data){
+      var students = jQuery.parseJSON(data);
 
-  //add groups that exists
-  var Groups = [["student1","note1"],["student2","note2"]];
+      var j;
+      //Name, Phone, Email, Id
+      for (j = 0; j < students.length; j++) {
+         addStudent(students[j].Name,students[j].Phone);
+      }
+  }
 
-
-  var data = getAndAddStudents(groupID,addStudent);
-
+  sendGetAllStudentRequest(groupID,addStudents);
+  //getAndAddStudents(groupID,addStudent);
 
   // add functionality to buttons
   $("#add_row").click(function(){
     var groupName =$("#group_input").val();
     var groupNotes =$("#note_input").val();
-    addGroup(groupName,groupNotes);
+    addStudent(groupName,groupNotes);
   });
 
   $("#delete_row").click(function(){
@@ -43,10 +50,6 @@ $(document).ready(function(){
 		  i--;
 		}
 	});
-
-
-
-
 
 
 });

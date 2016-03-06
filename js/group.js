@@ -10,7 +10,7 @@ $(document).ready(function(){
   $("#title").html(groupName);
   $("#note").html(GroupNotes);
 
-  var addGroup = function(groupName, groupNotes){
+  var addStudent = function(groupName, groupNotes){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td class="groupName'+i+'" >' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
@@ -27,18 +27,7 @@ $(document).ready(function(){
   var Groups = [["student1","note1"],["student2","note2"]];
 
 
-  var data = getStudents(groupID);
-  while(data==undefined);
-  alert("group.js="+data);
-  var students = jQuery.parseJSON(data);
-
-  alert(students);
-
-  var j;
-  //Name, Phone, Email, Id
-  for (j = 0; j < students.length; j++) {
-     addGroup(students[j].Name,students[j].Phone);
-  }
+  var data = getAndAddStudents(groupID,addStudent);
 
 
   // add functionality to buttons

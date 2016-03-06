@@ -40,7 +40,18 @@ var signin = function(userName, password){
 	});
 };
 
-var getStudents = function(groupID){
+var AddStudents  = function(data,addStudent){
+  var students = jQuery.parseJSON(data);
+	alert("AddStudents=" + data);
+  var j;
+  //Name, Phone, Email, Id
+  for (j = 0; j < students.length; j++) {
+     addStudent(students[j].Name,students[j].Phone);
+  }
+}
+
+
+var getAndAddStudents = function(groupID,addStudent){
 	console.log("getStudents",groupID);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 	$.ajax({
@@ -48,8 +59,7 @@ var getStudents = function(groupID){
 	   	method : "GET",
 	   	success: function(data) {
 	   		console.log('success',data,groupID);
-	   		alert("getStudents=" + data);
-			return data;	   		
+			AddStudents(data,addStudent);	   		
 	   	},
 	   	error: function (ajaxContext) {
         	alert(ajaxContext.responseText)

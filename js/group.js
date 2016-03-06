@@ -5,10 +5,6 @@ $(document).ready(function(){
   var GroupNotes = sessionStorage.getItem("groupNotes");
   var groupID   = sessionStorage.getItem("groupID");
 
-  
-
-
-
   var i=1;
 
   $("#title").html(groupName);
@@ -33,6 +29,8 @@ $(document).ready(function(){
 
   var data = getStudents(groupID);
   var students = jQuery.parseJSON(data);
+
+  alert(students);
 
   var j;
   //Name, Phone, Email, Id

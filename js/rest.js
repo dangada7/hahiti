@@ -4,9 +4,9 @@ var addUser = function(userName, password, name, email){
 
 	alert("add user");
 	$.ajax({
-	   	url:'http://localhost:8080/hahiti/users/3',
+	  	url:'http://localhost:8080/hahiti/users/3',
 	   	method : "POST",
-	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"MaxLate=5/MaxMissing=3/StatisticsFrequency=3"}',
+	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"'+defualtSetting+'"}',
 	   	success: function(data) {
 	   		console.log('success',data);
 	   	},
@@ -15,8 +15,6 @@ var addUser = function(userName, password, name, email){
   		}
 	});
 };
-
-
 
 var getuser1 = function(){
 	alert("add user");

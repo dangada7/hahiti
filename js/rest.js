@@ -54,7 +54,7 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 	$.ajax({
 	  	url:'http://localhost:8080/hahiti/groups',
 	   	method : "POST",
-	   	data : '{"Name":"'+groupName+'","Description":"'+groupNotes+'","Owner":"'+userName+'"}',
+	   	data : '{"Name":"'+groupName+'","Description":"'+groupNotes+'","Owner":"'+userName+'","ImageURL":""'+'"}',
 	   	success: function(data) {
 	   		console.log('success',data,groupName,groupNotes);
 	   		addGroupFunc(groupName,groupNotes);
@@ -87,7 +87,7 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 	$.ajax({
 	  	url:'http://localhost:8080/hahiti/students/'+id,
 	   	method : "POST",
-	   	data : '{"Id":"'+id+'","Name":"'+name+'","Phone":"'+phone+'","Email":"'+email+'","GroupId":"'+groupid+'"}',
+	   	data : '{"Id":"'+id+'","Name":"'+name+'","Phone":"'+phone+'","Email":"'+email+'","GroupId":"'+groupid+'","ImageURL":""'+'"}',
 	   	success: function(data) {
 	   		console.log('success',id,name,groupid,data);
 			addStudentFunc(id, name, phone, email, "0", "0", "0");	   		

@@ -9,7 +9,7 @@
 $(document).ready(function(){
  
   var userName = sessionStorage.getItem('username');
-  if(userName!=null){
+  if(userName!=null ||userName!="logout"){
     $("#loginButton").hide();
     $("#signinButton").hide();
   }else{
@@ -17,7 +17,7 @@ $(document).ready(function(){
   }
   
   $("#logoutButton").click( function(){
-    sessionStorage.setItem('username',null);
+    sessionStorage.setItem('username',"logout");
   });
 
   var i=1;

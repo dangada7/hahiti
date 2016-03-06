@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	var userName = sessionStorage.getItem('username');
-	if(userName!=null){
+	if(userName!=null ||userName=="logout"){
 		$("#loginButton").hide();
 		$("#signinButton").hide();
 	}else{
@@ -9,7 +9,7 @@ $(document).ready(function(){
 	}
 	
 	$("#logoutButton").click( function(){
-		sessionStorage.setItem('username',none);
+		sessionStorage.setItem('username',"logout");
 	});
 
 	$("#title").html("Welcome to Hahiti, " + userName);

@@ -14,8 +14,10 @@ $(document).ready(function(){
       i++; 
     };
 
-  groups = sessionStorage.getItem("Groups");
+  var data = sessionStorage.getItem("data");
  
+  var groups = jQuery.parseJSON(data);
+
   if(groups!=null)
     for (j = 0; j < groups.length; j++) {
        addGroup(groups[j].Name,groups[j].Description);

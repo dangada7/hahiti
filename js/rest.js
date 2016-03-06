@@ -21,7 +21,7 @@ var signup = function(userName, password, name, email){
 // Id, Name, Description, Students, 
 var parseSignin = function(data){
 	var groups = jQuery.parseJSON(data);
-	sessionStorage.setItem("Groups",groups);
+	
 	alert("parsejson");	
 };
 
@@ -36,6 +36,7 @@ var signin = function(userName, password){
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
 	   		console.log('success',data);
+	   		sessionStorage.setItem("data",data);
 	   		sessionStorage.setItem("username",userName);
 	   		parseSignin(data);
 	   		window.location.replace("home.html");

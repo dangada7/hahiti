@@ -12,10 +12,9 @@ var refreshTable = function(){
 };
 
 
-
-  var deleteGroup = function(bla){
-    alert("i love this shit" + bla);
-  }
+var deleteGroup = function(groupName){
+   sendDeleteGroupRequest(groupName,refreshTable);
+}
 
 $(document).ready(function(){
  

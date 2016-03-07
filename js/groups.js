@@ -14,36 +14,29 @@ var refreshTable = function(){
 
 var deleteGroup = function(groupId){
    var userName = sessionStorage.getItem('username');
-   sendDeleteGroupRequest(groupId,userName,refreshTable);
-}
+   sendDeleteGroupRequest(groupId,userName,refreshTable);}
 
 var editGroup = function(groupName, groupNotes, groupID){
   $("#editGroup").show();
-  $("#editGroupHeading").html("Edit Group-" + groupName + ", Group Notes-"+ groupNotes);
-  
-}
-
+  $("#editGroupHeading").html("Edit Group-" + groupName + ", Group Notes-"+ groupNotes); }
 
 $(document).ready(function(){
  
  
   var userName = sessionStorage.getItem('username');
 
-  if(userName==null ||userName=="logout"){
-    $("#logoutButton").hide();
-  }else{
-    $("#loginButton").hide();
-    $("#signupButton").hide();
-    $("#userName").html(userName);
-  }
-  
-  $("#logoutButton").click( function(){
-    sessionStorage.removeItem('username');
-  });
+  //set navigation bar
 
-
+  var setNavigationBar = function(){
+    if(userName==null ||userName=="logout"){
+      $("#logoutButton").hide();
+    }else{
+      $("#loginButton").hide();
+      $("#signupButton").hide();
+      $("#userName").html(userName);
+    }};
+  setNavigationBar();
   var i=1;
-
   var addGroupFunc = function(groupName, groupNotes, groupID){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td>' + groupName + '</td>' + 
@@ -53,10 +46,7 @@ $(document).ready(function(){
                               '<a onclick="goToGroupPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 
       $('#tab_logic').append('<tr id="addr'+ (i+1) +'" class="text-center"></tr>');
-      i++; 
-    };
-
-
+      i++; };
   var addGroupsFunc = function(data){
      //set all the groups
       var groups = jQuery.parseJSON(data);
@@ -64,33 +54,28 @@ $(document).ready(function(){
         for (j = 0; j < groups.length; j++) {
            addGroupFunc(groups[j].Name,groups[j].Description,groups[j].Id);
         }
-      }
-  };
+      }};
   
+  //add all the groups
   if(userName!=null){
     sendGetAllGroupsRequest(userName, addGroupsFunc);
   }
  
+  //proxyyyy
+  addGroupFunc("groupname","groupNotes","groupid");
 
-   addGroupFunc("groupname","groupNotes","groupid");
-
-
-  // try to add new group
+  //set the add row button - on click
   $("#add_row").click(function(){
     var groupName  = $("#group_input").val();
     var groupNotes = $("#note_input").val();
     $("#group_input").val("");
     $("#note_input").val("");
 
-    sendAddGroupRequest(groupName,groupNotes,userName, addGroupFunc);
+    sendAddGroupRequest(groupName,groupNotes,userName, addGroupFunc);});
+
+  //set the logout button - on click
+  $("#logoutButton").click( function(){
+        sessionStorage.removeItem('username');
   });
-
-  $("#delete_row").click(function(){
-    if(i>1){
-		  $("#addr"+(i-1)).html('');
-		  i--;
-		}
-	});
-
 
 });

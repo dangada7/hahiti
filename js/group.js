@@ -38,7 +38,7 @@ $(document).ready(function(){
 
   var i=1;
 
-  $("#title").html(groupName);
+  $("#titleText").html(groupName);
   $("#note").html(GroupNotes);
 
   //add one student
@@ -58,6 +58,10 @@ $(document).ready(function(){
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
   };
+
+
+
+  addStudentFunc("studentId","studentName","studentPhone","studentEmail", "present", "late", "missing");
 
   //add all the students in data (json) 
   var addStudentsFunc = function(data){

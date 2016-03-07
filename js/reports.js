@@ -18,11 +18,10 @@ $(document).ready(function(){
   var i=1;
 
 
-   var addReportFunc = function(date, Submitter, GroupId, Summary){
+   var addReportFunc = function(date, GroupName, Summary){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td>' + date + '</td>' + 
-                        '<td>' + Submitter + '</td>' + 
-                        '<td>' + GroupId + '</td>' +
+                        '<td>' + GroupName + '</td>' +
                         '<td>' + Summary + '</td>' +
 
                         '<td>  <a class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
@@ -33,19 +32,17 @@ $(document).ready(function(){
       i++; 
     };
 
- 
 
-
-  //addReportFunc("date", "Submitter", "GroupId", "Summary");
+  addReportFunc("date",  "groupName", "Summary");
 
   var addReportsFunc = function(data){
      //set all the groups
       var reports = jQuery.parseJSON(data);
       if(reports!=null){
         for (j = 0; j < reports.length; j++) {
-          //Date, Submitter, GroupId, Summary
+          //Date, Submitter, GroupId, Summary, GroupName
           //summary = SudentId, Status, Comment, 
-           addReportFunc(reports[j].Date, reports[j].Submitter, reports[j].GroupId, reports[j].Summary);  
+           addReportFunc(reports[j].Date, reports[j].GroupName, reports[j].Summary);  
         }
       }
   };
@@ -60,15 +57,5 @@ $(document).ready(function(){
  $("#add_row").click(function(){
      
   });
-
-
-
-
-  $("#delete_row").click(function(){
-    if(i>1){
-		  $("#addr"+(i-1)).html('');
-		  i--;
-		}
-	});
 
 });

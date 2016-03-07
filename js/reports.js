@@ -1,20 +1,23 @@
 $(document).ready(function(){
   
   var userName = sessionStorage.getItem('username');
-  if(userName!=null ||userName!="logout"){
-    $("#loginButton").hide();
-    $("#signinButton").hide();
-  }else{
+
+  if(userName==null ||userName=="logout"){
     $("#logoutButton").hide();
+  }else{
+    $("#loginButton").hide();
+    $("#signupButton").hide();
+    $("#userName").html(userName);
   }
   
   $("#logoutButton").click( function(){
-    sessionStorage.setItem('username',"logout");
+    sessionStorage.removeItem('username');
   });
 
+
+
+
   var i=1;
-
-
 
   $("#add_row").click(function(){
       $('#addr'+i).html("<td>"+ i  + "</td> <td>" + $("#group_input").val() + "</td><td>" + $("#note_input").val() + "</td>" + '<td> <a href="#" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a> <a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a> <a href="#" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );

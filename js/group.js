@@ -2,16 +2,19 @@ $(document).ready(function(){
  
   //bla bla
   var userName = sessionStorage.getItem('username');
-  if(userName!=null ||userName!="logout"){
-    $("#loginButton").hide();
-    $("#signinButton").hide();
-  }else{
+
+  if(userName==null ||userName=="logout"){
     $("#logoutButton").hide();
+  }else{
+    $("#loginButton").hide();
+    $("#signupButton").hide();
+    $("#userName").html(userName);
   }
   
   $("#logoutButton").click( function(){
-    sessionStorage.setItem('username',"logout");
+    sessionStorage.removeItem('username');
   });
+
 
   // bla bla 2
   var groupName = sessionStorage.getItem("groupName");
@@ -49,7 +52,8 @@ $(document).ready(function(){
       }
   }
 
-  sendGetAllStudentRequest(groupID,addStudentsFunc);
+  if(userName!=null)
+    sendGetAllStudentRequest(groupID,addStudentsFunc);
 
   // add new student
   $("#add_row").click(function(){

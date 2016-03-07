@@ -13,17 +13,21 @@ var refreshTable = function(){
 
 $(document).ready(function(){
  
+ 
   var userName = sessionStorage.getItem('username');
-  if(userName!=null ||userName!="logout"){
-    $("#loginButton").hide();
-    $("#signinButton").hide();
-  }else{
+
+  if(userName==null ||userName=="logout"){
     $("#logoutButton").hide();
+  }else{
+    $("#loginButton").hide();
+    $("#signupButton").hide();
+    $("#userName").html(userName);
   }
   
   $("#logoutButton").click( function(){
-    sessionStorage.setItem('username',"logout");
+    sessionStorage.removeItem('username');
   });
+
 
   var i=1;
 

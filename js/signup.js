@@ -1,15 +1,17 @@
 $(document).ready(function(){
 
 	var userName = sessionStorage.getItem('username');
-	if(userName!=null ||userName!="logout"){
-		$("#loginButton").hide();
-		$("#signinButton").hide();
-	}else{
+
+	if(userName==null ||userName=="logout"){
 		$("#logoutButton").hide();
+	}else{
+		$("#loginButton").hide();
+		$("#signupButton").hide();
+		$("#userName").html(userName);
 	}
 	
 	$("#logoutButton").click( function(){
-		sessionStorage.setItem('username',"logout");
+		sessionStorage.removeItem('username');
 	});
 
 
@@ -31,17 +33,5 @@ $(document).ready(function(){
 		sendSignupRequest(username,password,name,email,loginFunc);
 	});
 
-
-
-	$("#signin_form").submit(function(){
-		// Stop form from submitting normally
-		event.preventDefault();
-		 
-		var username = $("#signin_inputUser").val();
-		var password = $("#signin_inputPassword").val();
-
-		sendSigninRequest(username,password,loginFunc);
-
-	});
 
 });

@@ -1,3 +1,16 @@
+
+var refreshTable = function(){
+   window.location.replace("group.html");
+};
+
+
+
+var deleteStudent = function(studentId){
+  var groupID   = sessionStorage.getItem("groupID");
+  sendDeleteStudentRequest(studentId, groupID, refreshTable);
+}
+
+
 $(document).ready(function(){
  
   //bla bla
@@ -14,6 +27,8 @@ $(document).ready(function(){
   $("#logoutButton").click( function(){
     sessionStorage.removeItem('username');
   });
+
+
 
 
   // bla bla 2
@@ -35,9 +50,9 @@ $(document).ready(function(){
                         '<td>' + studentEmail + '</td>' +
                         '<td>' + present + '</td>' +
                         '<td>' + late + '</td>' +
-                        '<td>' + missing + '</td>'
-                        '<td> <a onclick="sendDeleteStudentRequest()" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
-                             '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
+                        '<td>' + missing + '</td>' +
+                        '<td> <a onclick="deleteStudent(\''+studentId+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
+                             '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>'
                         );
 
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');

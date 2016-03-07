@@ -37,12 +37,11 @@ $(document).ready(function(){
   });
 
 
-
   var i=1;
 
   var addGroupFunc = function(groupName, groupNotes, groupID){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
-                        '<td class="groupName'+i+'" >' + groupName + '</td>' + 
+                        '<td>' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
                         '<td> <a onclick="deleteGroup(\''+groupID+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
                               '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
@@ -63,13 +62,12 @@ $(document).ready(function(){
       }
   };
   
-
   if(userName!=null){
     sendGetAllGroupsRequest(userName, addGroupsFunc);
   }
  
 
-  // addGroupFunc("groupname","groupNotes","groupid");
+   addGroupFunc("groupname","groupNotes","groupid");
   //  addGroupFunc("groupnam2e","groupNo2tes","gr2oupid");
 
 
@@ -90,6 +88,5 @@ $(document).ready(function(){
 		}
 	});
 
- 
 
 });

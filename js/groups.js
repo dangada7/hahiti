@@ -35,7 +35,7 @@ $(document).ready(function(){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td class="groupName'+i+'" >' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
-                        '<td> <a onclick="sendDeleteGroupRequest(\''+groupID+'\','+refreshTable+')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
+                        '<td> <a onclick="sendDeleteGroupRequest("dan","dan")" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
                              '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
                              '<a onclick="goToGroupPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 
@@ -54,9 +54,10 @@ $(document).ready(function(){
       }
   };
   
-  if(userName!=null)
-    sendGetAllGroupsRequest(userName, addGroupsFunc);
 
+  if(userName!=null){
+    sendGetAllGroupsRequest(userName, addGroupsFunc);
+  }
  
 
   // try to add new group

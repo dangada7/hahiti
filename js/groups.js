@@ -17,6 +17,11 @@ var deleteGroup = function(groupId){
 }
 
 
+var editGroup = function(){
+
+}
+
+
 $(document).ready(function(){
  
  
@@ -35,9 +40,7 @@ $(document).ready(function(){
   });
 
 
-  var editGroup = var function(){
 
-  }
 
 
 

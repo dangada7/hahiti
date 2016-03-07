@@ -11,6 +11,12 @@ var refreshTable = function(){
    window.location.replace("groups.html");
 };
 
+
+
+  var temp = function(){
+    alert("i love this shit");
+  }
+
 $(document).ready(function(){
  
  
@@ -29,9 +35,6 @@ $(document).ready(function(){
   });
 
 
-  var temp = function(){
-    alert("i love this shit");
-  }
 
 
   var i=1;

@@ -82,7 +82,7 @@ $(document).ready(function(){
     $("#student_phone_input").val("");
     $("#student_email_input").val("");
 
-    sendAddNewStudentRequest(studentId,studentName,studentEmail,studentPhone,groupID, addStudentFunc);
+    sendAddNewStudentRequest(studentId,studentName,studentPhone,studentEmail,groupID, addStudentFunc);
   });
   // logout
   $("#logoutButton").click( function(){

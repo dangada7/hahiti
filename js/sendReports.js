@@ -50,25 +50,9 @@ $(document).ready(function(){
                         '<td>' + late + '</td>' +
                         '<td>' + missing + '</td>' +
                         '<td>' +
-					     ' <div class="btn-group" data-toggle="button"> '+      
-					     '   <label class="btn btn-success active">'+
-					          'Present'+
-					          '<input type="radio" name="options" id="option2" autocomplete="off" chacked>'+
-					          '<span class="glyphicon "></span>'+
-					       ' </label>'+
-					        
-					       ' <label class="btn btn-warning">'+
-					         ' Late'+
-					          '<input type="radio" name="options" id="option2" autocomplete="off">'+
-					         ' <span class="glyphicon "></span>'+
-					        '</label>'+
-
-					        '<label class="btn btn-danger">'+
-					        '  Missing'+
-					         ' <input type="radio" name="options" id="option2" autocomplete="off">'+
-					          '<span class="glyphicon "></span>'+
-					       ' </label>'+
-					      '</div>'+
+					 		'<label class="radio-inline"><input type="radio" name="optradio">Present</label>' + 
+					 		'<label class="radio-inline"><input type="radio" name="optradio">Late</label>' + 
+					 		'<label class="radio-inline"><input type="radio" name="optradio">Mssing</label>' + 
                         '</td>'
                         );
 
@@ -107,8 +91,6 @@ $(document).ready(function(){
     //note
     sessionStorage.removeItem('username');
   });
-
-
 
 
   //proxy

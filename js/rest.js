@@ -1,7 +1,7 @@
 
 var BaseURL = "http://localhost:8080/hahiti";
 
-var BaseURL = "hahiti.cloudapp.net";
+//var BaseURL = "hahiti.cloudapp.net";
 
 var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	console.log(userName, password, name, email);

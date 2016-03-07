@@ -21,7 +21,7 @@ var editGroup = function(groupName, groupNotes, groupID){
   alert(groupName +","+groupNotes+"," +groupID);
 
   $("#editGroup").show();
-  $("#editGroupHeading").html("Edit G")
+  $("#editGroupHeading").html("Edit Group-" + groupName + ", Group Notes-"+ groupNotes);
   
 }
 
@@ -75,7 +75,6 @@ $(document).ready(function(){
  
 
    addGroupFunc("groupname","groupNotes","groupid");
-  //  addGroupFunc("groupnam2e","groupNo2tes","gr2oupid");
 
 
   // try to add new group

@@ -129,3 +129,18 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
   		}
 	});
  }
+
+var sendGetAllReportRequest = function(userName, addReportsFunc){
+	console.log("send get all reports request",userName);
+	$.ajax({
+	  	url:'http://localhost:8080/hahiti/reports/'+userName,
+	   	method : "GET",
+	   	success: function(data) {
+	   		console.log('success get all reports',userName,data);
+			addReportsFunc(data);	   		
+	   	},
+	   	error: function (ajaxContext) {
+        	alert(ajaxContext.responseText)
+  		}
+	});
+ }

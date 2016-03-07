@@ -31,7 +31,7 @@ $(document).ready(function(){
                         '<td>' + date + '</td>' + 
                         '<td>' + GroupName + '</td>' +
                         '<td>' + Summary + '</td>' +
-                        '<td>  <a onclick="deleteReport(\''+groupId+'\',\''+date+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
+                        '<td>  <a onclick="deleteReport(\''+groupId+'\',\''+date+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a> ' +
                               '<a class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>'
                         );
 

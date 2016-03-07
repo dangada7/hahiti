@@ -1,7 +1,7 @@
 
-var refreshTable = function(){
+var refreshFunc = function(){
   //just a note
-   window.location.replace("group.html");
+   window.location.replace("reports.html");
  };
 
 var deleteStudent = function(studentId){
@@ -40,23 +40,17 @@ $(document).ready(function(){
   $("#titleText").html(groupName);
   $("#note").html(GroupNotes);
   //add one student
-  var addStudentFunc = function(studentId,studentName,studentPhone,studentEmail, present, late, missing ){
+  var addStudentFunc = function(studentId,studentName,studentPhone,studentEmail){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td>' + studentId + '</td>' + 
                         '<td>' + studentName + '</td>' +
                         '<td>' + studentPhone + '</td>' +
                         '<td>' + studentEmail + '</td>' +
-                        '<td>' + present + '</td>' +
-                        '<td>' + late + '</td>' +
-                        '<td>' + missing + '</td>' +
                         '<td>' +
-					 		'<label class="radio-inline"><input type="radio" name="optradio">Present</label>' + 
-					 		'<label class="radio-inline"><input type="radio" name="optradio">Late</label>' + 
-					 		'<label class="radio-inline"><input type="radio" name="optradio">Mssing</label>' + 
 					 		'<div class="btn-group" data-toggle="buttons">'+
-							  '<label class="btn btn-primary active"> <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected) </label>'+
-							  '<label class="btn btn-primary"><input type="radio" name="options" id="option2" autocomplete="off"> Radio 2 </label>' +
-							  '<label class="btn btn-primary"> <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3  </label>'+
+							  '<label class="btn btn-success active"> <input type="radio" name="options" id="Present'+i+'" autocomplete="off" checked> Present <span class="glyphicon glyphicon-ok"></span> </label>'+
+							  '<label class="btn btn-warning">        <input type="radio" name="options" id="Late'+i+'" autocomplete="off"> Late <span class="glyphicon glyphicon-ok"></span> </label>' +
+							  '<label class="btn btn-danger">         <input type="radio" name="options" id="Missing'+i+'" autocomplete="off"> Missing  <span class="glyphicon glyphicon-ok"></span> </label>'+
 							'</div>'+
                         '</td>'
                         );
@@ -64,33 +58,21 @@ $(document).ready(function(){
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
   };
+
   //add all the students in data (json) 
   var addStudentsFunc = function(data){
       var students = jQuery.parseJSON(data);
       var j;
 
       for (j = 0; j < students.length; j++) {
-         addStudentFunc(students[j].Id, students[j].Name, students[j].Phone, students[j].Email, students[j].Present, students[j].Late, students[j].Missing);
+         addStudentFunc(students[j].Id, students[j].Name, students[j].Phone, students[j].Email);
       }
   }
   //insert to the table all students
   if(userName!=null){
     sendGetAllStudentRequest(groupID,addStudentsFunc);
   }
-  // add new student
-  $("#add_row").click(function(){
-    var studentId  = $("#student_id_input").val();
-    var studentName  = $("#student_name_input").val();
-    var studentPhone  = $("#student_phone_input").val();
-    var studentEmail  = $("#student_email_input").val();
-    
-    $("#student_id_input").val("");
-    $("#student_name_input").val("");
-    $("#student_phone_input").val("");
-    $("#student_email_input").val("");
 
-    sendAddNewStudentRequest(studentId,studentName,studentPhone,studentEmail,groupID, addStudentFunc);
-  });
   // logout
   $("#logoutButton").click( function(){
     //note
@@ -98,8 +80,22 @@ $(document).ready(function(){
   });
 
 
+  // logout
+  $("#send_report").click( function(){
+    
+
+    sendAddNewReportRequest(userName, groupID, groupName, "Summary", refreshFunc);
+
+  });
+
+
   //proxy
-  addStudentFunc("bla+","studentName","studentPhone","studentEmail", "present", "late", "missing");
+  addStudentFunc("bla+","studentName","studentPhone","studentEmail");
+    //proxy
+  addStudentFunc("bla+","studentName","studentPhone","studentEmail");
+
+
+
 
 
 });

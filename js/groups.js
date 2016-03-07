@@ -48,8 +48,8 @@ $(document).ready(function(){
                         '<td>' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
                         '<td> <a onclick="deleteGroup(\''+groupID+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>  '+
-                              '<a onclick="editGroup(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>  ' +
-                              '<a onclick="goToSendReportPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-warning"> <span class="glyphicon glyphicon-ok"></span></a>  ' +
+                              '<a onclick="editGroup(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a> &nbsp&nbsp' +
+                              '<a onclick="goToSendReportPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-warning"> <span class="glyphicon glyphicon-file"></span></a>  ' +
                               '<a onclick="goToStudentsPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-info"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 
       $('#tab_logic').append('<tr id="addr'+ (i+1) +'" class="text-center"></tr>');

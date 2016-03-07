@@ -50,7 +50,7 @@ $(document).ready(function(){
                         '<td>' + present + '</td>' +
                         '<td>' + late + '</td>' +
                         '<td>' + missing + '</td>' +
-                        '<td> <a onclick="deleteStudent(\''+studentId+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
+                        '<td> <a onclick="deleteStudent(\''+studentId+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a> ' +
                              '<a onclick="editStudent()" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>'
                         );
 
@@ -84,6 +84,7 @@ $(document).ready(function(){
 
     sendAddNewStudentRequest(studentId,studentName,studentPhone,studentEmail,groupID, addStudentFunc);
   });
+
   // logout
   $("#logoutButton").click( function(){
     //note

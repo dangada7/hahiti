@@ -1,7 +1,7 @@
 
 //var BaseURL = "http://localhost:8080/hahiti";
 
-var BaseURL = "hahiti.cloudapp.net";
+var BaseURL = "http://hahiti.cloudapp.net";
 
 var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	console.log(userName, password, name, email);
@@ -161,22 +161,20 @@ var sendDeleteReportRequest = function(groupID, owner, date, refreshTable){
 	});
 };
 
-var sendAddNewReportRequest = function(ownerName, GroupId, GroupName, Summary, addReportFunc){
+var sendAddNewReportRequest = function(ownerName, GroupId, GroupName, Summary, refreshFunc){
 
 	 	console.log("send add new report request",ownerName,GroupId,GroupName,Summary);
 		$.ajax({
 		  	url:BaseURL + '/reports',
 		   	method : "POST",
-		   	data : '{"Submitter":"'+ownerName+'","GroupId":"'+GroupId+'","GroupName":"'+GroupName+'","Summary":"'+Summary+'}',
+		   	data : '{"Submitter":"'+ownerName+'","GroupId":"'+GroupId+'","GroupName":"'+GroupName+'","Summary":"'+Summary+'"}',
 		   	success: function(data) {
 		   		console.log('success add new report',ownerName,GroupId,GroupName,Summary,data);
-				addReportFunc("now",GroupName, Summary,GroupId);  		
+				refreshFunc();  		
 		   	},
 		   	error: function (ajaxContext) {
 	        	alert(ajaxContext.responseText)
 	  		}
 		});
 };
-
-
 

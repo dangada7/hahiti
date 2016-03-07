@@ -1,6 +1,8 @@
 
 var BaseURL = "http://localhost:8080/hahiti";
 
+var BaseURL = "hahiti.cloudapp.net";
+
 var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	console.log(userName, password, name, email);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
@@ -88,7 +90,7 @@ var sendAddNewStudentRequest = function(id, name, phone, email, groupid, addStud
 		$.ajax({
 		  	url:BaseURL + '/students/'+id,
 		   	method : "POST",
-		   	data : '{"Id":"'+id+'","Name":"'+name+'","Phone":"'+phone+'","Email":"'+email+'","GroupId":"'+groupid+'","ImageURL":""'+'}',
+		   	data : '{"Name":"'+name+'","Phone":"'+phone+'","Email":"'+email+'","GroupId":"'+groupid+'","ImageURL":""'+'}',
 		   	success: function(data) {
 		   		console.log('success add new student',id,name,groupid,data);
 				addStudentFunc(id, name, phone, email, "0", "0", "0");	   		

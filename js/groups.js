@@ -69,7 +69,7 @@ $(document).ready(function(){
   }
  
 
-  addGroupFunc("groupname","groupNotes","groupid");
+  //addGroupFunc("groupname","groupNotes","groupid");
 
 
   // try to add new group

@@ -11,14 +11,10 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <style>
-	    #group{
-	        background-color:#d3d3d3;
-	        
-	    }
-	    .jumbotron{
-	        background-color:#007f00;
-	        color:white;
-	    }
+      #title{
+          background-color:#0080ff;
+          color:white;
+      }
     </style>
   </head>
 
@@ -41,11 +37,12 @@
             <li><a href="reports.html">Reports</a></li>
             <li><a href="groups.html">Groups</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-              <li id="signinButton"><a href="index.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li id="loginButton"><a href="index.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-              <li id="logoutButton"><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-          </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li ><a  id="userName" > notConnected</a></li>
+              <li id="signupButton"><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li id="loginButton"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li id="logoutButton"><a href="login.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>            
+            </ul>
         </div>
       </div>
     </nav>
@@ -53,81 +50,95 @@
     <!-- title -->
     <div class="container-fluid">
       <!-- jumbotron enlarges fonts and puts everything in a gray box with rounded corners. If jumbotron is outside a container it fills the total width. You can change the styles by placing the changes after thedd Bootstrap CDN link -->
-      <div class="jumbotron ">
+      <div class="jumbotron" id="title">
       	 <h1 id="title">title</h1>
          <p  id="note">note</p>
       </div>
     </div>
 
 	<!-- table -->
-	<div class="container well well-sm">
-	    <div class="row clearfix">
-	    <div class="col-md-12 column">
-	      <table class="table table-bordered table-hover" id="tab_logic">
-	        <thead>
-	          <tr >
-	            <th class="text-center">
-	              #
-	            </th>
-              <th class="text-center">
-                Id
-              </th>
-	            <th class="text-center">
-	              Name
-	            </th>
-	            <th class="text-center">
-	              Phone
-	            </th>
-	           	<th class="text-center">
-	           		email
-	            </th>
-              <th class="text-center">
-                Present
-              </th>
-              <th class="text-center">
-                Late
-              </th>
-              s<th class="text-center">
-                Missing
-              </th>
-	          </tr>
-	        </thead>
-	        <tbody>
-	            <tr id='addr1' class="text-center">
-	            </tr>
-	        </tbody>
-	      </table>
-	    </div>
-	  </div>
+	<div class="container-fluid">
+      <div class="panel panel-default" >
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Reports table</h3>
+        </div>
+        <div class="panel-body">
+
+    	    <div class="row clearfix">
+    	    <div class="col-md-12 column">
+    	      <table class="table table-bordered table-hover" id="tab_logic">
+    	        <thead>
+    	          <tr >
+    	            <th class="text-center">
+    	              #
+    	            </th>
+                  <th class="text-center">
+                    Id
+                  </th>
+    	            <th class="text-center">
+    	              Name
+    	            </th>
+    	            <th class="text-center">
+    	              Phone
+    	            </th>
+    	           	<th class="text-center">
+    	           		email
+    	            </th>
+                  <th class="text-center">
+                    Present
+                  </th>
+                  <th class="text-center">
+                    Late
+                  </th>
+                  <th class="text-center">
+                    Missing
+                  </th>
+    	          </tr>
+    	        </thead>
+    	        <tbody>
+    	            <tr id='addr1' class="text-center">
+    	            </tr>
+    	        </tbody>
+    	      </table>
+    	    </div>
+    	  </div>
+        </div>
+    </div>
 	</div>
 
 	<br>
 	<!-- add new student -->
-    <div class="container well well-sm">
-    	<h2> Add new students </h2>
+    <div class="container-fluid">
+       <div class="panel panel-default" >
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Add new students</h3>
+        </div>
+        <div class="panel-body">
 
-		<div class="input-group input-group-lg">
-		  <span class="input-group-addon">student id</span>
-		  <input id="student_id_input" type="text" class="form-control" placeholder="id">
-		</div>
+      		<div class="input-group input-group-lg">
+      		  <span class="input-group-addon">student id</span>
+      		  <input id="student_id_input" type="text" class="form-control" placeholder="id">
+      		</div>
 
-		<div class="input-group input-group-lg">
-		  <span class="input-group-addon">name</span>
-		  <input id="student_name_input" type="text" class="form-control" placeholder="name">
-		</div>
+      		<div class="input-group input-group-lg">
+      		  <span class="input-group-addon">name</span>
+      		  <input id="student_name_input" type="text" class="form-control" placeholder="name">
+      		</div>
 
-    <div class="input-group input-group-lg">
-      <span class="input-group-addon">phone</span>
-      <input id="student_phone_input" type="text" class="form-control" placeholder="phone">
-    </div>
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon">phone</span>
+            <input id="student_phone_input" type="text" class="form-control" placeholder="phone">
+          </div>
 
-    <div class="input-group input-group-lg">
-      <span class="input-group-addon">email</span>
-      <input id="student_email_input" type="text" class="form-control" placeholder="email">
-    </div><br>
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon">email</span>
+            <input id="student_email_input" type="text" class="form-control" placeholder="email">
+          </div><br>
 
-		<a id="add_row" class="btn btn-default ">Add Row</a>
-		<a id='delete_row' class="btn btn-default ">Delete Row</a>
+      		<a id="add_row" class="btn btn-default ">Add Row</a>
+      		<a id='delete_row' class="btn btn-default ">Delete Row</a>
+          </div>
+        </div>
     </div>
 
 

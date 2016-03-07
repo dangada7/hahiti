@@ -8,12 +8,8 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <style>
-    #group{
-        background-color:#d3d3d3;
-        
-    }
-    .jumbotron{
-        background-color:#007f00;
+    #title{
+        background-color:#0080ff;
         color:white;
     }
     </style>
@@ -24,7 +20,7 @@
 
     <!-- navigation bar -->
     <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
+      <div class="container-fluid" >
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
@@ -39,71 +35,85 @@
             <li class="active"><a href="reports.html">Reports</a></li>
             <li><a href="groups.html">Groups</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-              <li id="signinButton"><a href="index.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li id="loginButton"><a href="index.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-              <li id="logoutButton"><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-          </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li ><a  id="userName" > notConnected</a></li>
+              <li id="signupButton"><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li id="loginButton"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li id="logoutButton"><a href="login.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>            
+            </ul>
         </div>
       </div>
     </nav>
 
     <!-- title -->
-    <div class="container-fluid">
+    <div class="container-fluid ">
       <!-- jumbotron enlarges fonts and puts everything in a gray box with rounded corners. If jumbotron is outside a container it fills the total width. You can change the styles by placing the changes after thedd Bootstrap CDN link -->
-      <div class="jumbotron ">
+      <div class="jumbotron" id="title">
          <h1>Reports page</h1>
         <p>here you can find all your reports order by group name. just click the group you want to examine</p>
       </div>
     </div>
 
       <!-- table -->
-    <div class="container well well-sm">
-        <div class="row clearfix">
-          <div class="col-md-12 column">
-            <table class="table table-bordered table-hover" id="tab_logic">
-              <thead>
-                <tr >
-                  <th class="text-center">
-                    #
-                  </th>
-                  <th class="text-center">
-                    Name
-                  </th>
-                  <th class="text-center">
-                    Notes
-                  </th>
-                  <th class="text-center">
-                    Other Options
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr id='addr1' class="text-center">
+    <div class="container-fluid">
+      <div class="panel panel-default" >
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Reports table</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row clearfix">
+            <div class="col-md-12 column">
+              <table class="table table-bordered table-hover" id="tab_logic">
+                <thead>
+                  <tr >
+                    <th class="text-center">
+                      #
+                    </th>
+                    <th class="text-center">
+                      Name
+                    </th>
+                    <th class="text-center">
+                      Notes
+                    </th>
+                    <th class="text-center">
+                      Other Options
+                    </th>
                   </tr>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                    <tr id='addr1' class="text-center">
+                    </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
+      </div>
     </div>
     <br>
 
   <!-- add new report -->
-  <div class="container well well-sm">
-    <h2> Add new report </h2>
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon">Group Name</span>
-        <input id="group_input" type="text" class="form-control" placeholder="group name">
+  <div class="container-fluid">
+    <div class="panel panel-default" >
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Add new report</h3>
       </div>
+      <div class="panel-body">
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon">Group Name</span>
+            <input id="group_input" type="text" class="form-control" placeholder="group name">
+          </div>
 
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon">Notes</span>
-        <input id="note_input" type="text" class="form-control" placeholder="description">
-      </div><br>
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon">Notes</span>
+            <input id="note_input" type="text" class="form-control" placeholder="description">
+          </div><br>
 
 
-      <a id="add_row" class="btn btn-default ">Add Row</a>
-      <a id='delete_row' class="btn btn-default ">Delete Row</a>
+          <a id="add_row" class="btn btn-default ">Add Row</a>
+          <a id='delete_row' class="btn btn-default ">Delete Row</a>
+        </div>
+    </div>
   </div>
 
   <!-- scripts -->

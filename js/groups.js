@@ -78,7 +78,7 @@ $(document).ready(function(){
     $("#group_input").val("");
     $("#note_input").val("");
 
-    sendAddGroupRequest(groupName,groupNotes,userName, addGroupFunc);});
+    sendAddGroupRequest(groupName,groupNotes,userName, refreshTable);});
 
   //set the logout button - on click
   $("#logoutButton").click( function(){

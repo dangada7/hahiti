@@ -53,6 +53,11 @@ $(document).ready(function(){
 					 		'<label class="radio-inline"><input type="radio" name="optradio">Present</label>' + 
 					 		'<label class="radio-inline"><input type="radio" name="optradio">Late</label>' + 
 					 		'<label class="radio-inline"><input type="radio" name="optradio">Mssing</label>' + 
+					 		'<div class="btn-group" data-toggle="buttons">'+
+							  '<label class="btn btn-primary active"> <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected) </label>'+
+							  '<label class="btn btn-primary"><input type="radio" name="options" id="option2" autocomplete="off"> Radio 2 </label>' +
+							  '<label class="btn btn-primary"> <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3  </label>'+
+							'</div>'+
                         '</td>'
                         );
 

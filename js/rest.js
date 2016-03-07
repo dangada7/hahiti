@@ -53,7 +53,7 @@ var sendGetAllStudentRequest = function(groupID,addStudents){
 	});
 };
 
-var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
+var sendAddGroupRequest = function(groupName,groupNotes,userName,refreshTable){
 	console.log("send add new group request",groupName, groupNotes, userName, addGroupFunc);
 	$.ajax({
 	  	url:BaseURL + '/groups',
@@ -61,7 +61,7 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 	   	data : '{"Name":"'+groupName+'","Description":"'+groupNotes+'","Owner":"'+userName+'","ImageURL":""'+'}',
 	   	success: function(data) {
 	   		console.log('successadd new group',data,groupName,groupNotes);
-	   		addGroupFunc(groupName,groupNotes);
+	   		refreshTable();
 	   	},
 	   	error: function (ajaxContext) {
         	alert(ajaxContext.responseText)

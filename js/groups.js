@@ -13,7 +13,7 @@ var refreshTable = function(){
 
 
 
-  var temp = function(bla){
+  var temp = function(bla, bla2){
     alert("i love this shit" + bla);
   }
 
@@ -43,7 +43,7 @@ $(document).ready(function(){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td class="groupName'+i+'" >' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
-                        '<td> <a onclick="temp(\'dan\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
+                        '<td> <a onclick="temp(\'+groupName+\','+refreshTable+'')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
                              '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
                              '<a onclick="goToGroupPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 

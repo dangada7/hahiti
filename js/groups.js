@@ -17,6 +17,13 @@ var deleteGroup = function(groupId){
    sendDeleteGroupRequest(groupId,userName,refreshTable);
 }
 
+var editGroup = function(groupName, groupNotes, groupID){
+  alert(groupName +","+groupNotes+"," +groupID);
+
+  $("#editGroup").show();
+  $("#editGroupHeading").html("Edit G")
+  
+}
 
 
 $(document).ready(function(){
@@ -44,7 +51,7 @@ $(document).ready(function(){
                         '<td>' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
                         '<td> <a onclick="deleteGroup(\''+groupID+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
-                              '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
+                              '<a onclick="editGroup(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
                               '<a onclick="goToGroupPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 
       $('#tab_logic').append('<tr id="addr'+ (i+1) +'" class="text-center"></tr>');

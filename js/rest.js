@@ -121,7 +121,7 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 	  	url:'http://localhost:8080/hahiti/students/'+studentID+','+groupID,
 	   	method : "DELETE",
 	   	success: function(data) {
-	   		console.log('success delete Student',studentID,GroupID,data);
+	   		console.log('success delete Student',studentID,groupID,data);
   			refreshTable();
 	   	},
 	   	error: function (ajaxContext) {

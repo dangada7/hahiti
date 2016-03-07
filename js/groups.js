@@ -18,8 +18,6 @@ var deleteGroup = function(groupId){
 }
 
 var editGroup = function(groupName, groupNotes, groupID){
-  alert(groupName +","+groupNotes+"," +groupID);
-
   $("#editGroup").show();
   $("#editGroupHeading").html("Edit Group-" + groupName + ", Group Notes-"+ groupNotes);
   

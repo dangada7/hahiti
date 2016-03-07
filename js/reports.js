@@ -41,8 +41,8 @@ $(document).ready(function(){
   var addReportsFunc = function(data){
      //set all the groups
       var reports = jQuery.parseJSON(data);
-      if(groups!=null){
-        for (j = 0; j < groups.length; j++) {
+      if(reports!=null){
+        for (j = 0; j < reports.length; j++) {
           //Date, Submitter, GroupId, Summary
           //summary = SudentId, Status, Comment, 
            addReportFunc(reports[j].Date, reports[j].Submitter, reports[j].GroupId, reports[j].Summary);  

@@ -29,13 +29,18 @@ $(document).ready(function(){
   });
 
 
+  var temp = function(){
+    alert("i love this shit");
+  }
+
+
   var i=1;
 
   var addGroupFunc = function(groupName, groupNotes, groupID){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td class="groupName'+i+'" >' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
-                        '<td> <a onclick="sendDeleteGroupRequest("dan","dan")" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
+                        '<td> <a onclick="temp()" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
                              '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
                              '<a onclick="goToGroupPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 

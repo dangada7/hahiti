@@ -48,7 +48,7 @@ $(document).ready(function(){
                               '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
                               '<a onclick="goToGroupPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 
-      $('#tab_logic').append('<tr id="addr'+ i +'" class="text-center"></tr>');
+      $('#tab_logic').append('<tr id="addr'+ (i+1) +'" class="text-center"></tr>');
       i++; 
     };
 
@@ -69,7 +69,8 @@ $(document).ready(function(){
   }
  
 
-  //addGroupFunc("groupname","groupNotes","groupid");
+  // addGroupFunc("groupname","groupNotes","groupid");
+  //  addGroupFunc("groupnam2e","groupNo2tes","gr2oupid");
 
 
   // try to add new group

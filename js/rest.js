@@ -117,7 +117,7 @@ var sendDeleteGroupRequest = function(groupID, owner, refreshTable){
 };
 
 var sendDeleteStudentRequest = function(studentID, groupID, refreshTable){
- 	console.log("send delete Student request",groupID);
+ 	console.log("send delete Student request",studentID,groupID);
 	$.ajax({
 	  	url:BaseURL + '/students/'+studentID+','+groupID,
 	   	method : "DELETE",

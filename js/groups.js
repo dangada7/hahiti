@@ -73,7 +73,6 @@ $(document).ready(function(){
 
   //set the add row button - on click
   $("#add_row").click(function(){
-    alert("here");
     var groupName  = $("#group_input").val();
     var groupNotes = $("#note_input").val();
     $("#group_input").val("");

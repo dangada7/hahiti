@@ -36,9 +36,10 @@ $(document).ready(function(){
   var groupName = sessionStorage.getItem("groupName");
   var GroupNotes = sessionStorage.getItem("groupNotes");
   var groupID   = sessionStorage.getItem("groupID");
+  
   var i=1;
   $("#titleText").html(groupName);
-  $("#note").html(GroupNotes);
+  $("#note").html(groupID);
   //add one student
   var addStudentFunc = function(studentId,studentName,studentPhone,studentEmail, present, late, missing ){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 

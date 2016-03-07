@@ -1,9 +1,8 @@
 
 var refreshTable = function(){
+  //just a note
    window.location.replace("group.html");
-};
-
-
+ };
 
 var deleteStudent = function(studentId){
   var groupID   = sessionStorage.getItem("groupID");
@@ -11,10 +10,12 @@ var deleteStudent = function(studentId){
 }
 
 
+//document ready
 $(document).ready(function(){
  
-  //bla bla
+  //get user name
   var userName = sessionStorage.getItem('username');
+
 
   if(userName==null ||userName=="logout"){
     $("#logoutButton").hide();
@@ -29,9 +30,7 @@ $(document).ready(function(){
   });
 
 
-
-
-  // bla bla 2
+  // 
   var groupName = sessionStorage.getItem("groupName");
   var GroupNotes = sessionStorage.getItem("groupNotes");
   var groupID   = sessionStorage.getItem("groupID");
@@ -58,7 +57,6 @@ $(document).ready(function(){
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
   };
-
 
 
   addStudentFunc("studentId","studentName","studentPhone","studentEmail", "present", "late", "missing");
@@ -90,13 +88,6 @@ $(document).ready(function(){
 
     sendAddNewStudentRequest(studentId,studentName,studentPhone,studentEmail,groupID, addStudentFunc);
   });
-
-  $("#delete_row").click(function(){
-    if(i>1){
-		  $("#addr"+(i-1)).html('');
-		  i--;
-		}
-	});
 
 
 });

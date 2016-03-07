@@ -1,32 +1,30 @@
- 
- var goToGroupPage = function(groupName,groupNotes,groupID){
+
+var goToGroupPage = function(groupName,groupNotes,groupID){
     sessionStorage.setItem("groupName",groupName);
     sessionStorage.setItem("groupNotes",groupNotes);
     sessionStorage.setItem("groupID",groupID);
     window.location.replace("group.html");
 };
-
-
 var refreshTable = function(){
-   window.location.replace("groups.html");
+    //just a note
+    window.location.replace("groups.html");
 };
-
-
 var deleteGroup = function(groupId){
    var userName = sessionStorage.getItem('username');
-   sendDeleteGroupRequest(groupId,userName,refreshTable);}
-
+   sendDeleteGroupRequest(groupId,userName,refreshTable);
+ }
 var editGroup = function(groupName, groupNotes, groupID){
   $("#editGroup").show();
-  $("#editGroupHeading").html("Edit Group-" + groupName + ", Group Notes-"+ groupNotes); }
+  $("#editGroupHeading").html("Edit Group-" + groupName + ", Group Notes-"+ groupNotes); 
+}
 
+//document ready:
 $(document).ready(function(){
- 
- 
+
+  //get userName
   var userName = sessionStorage.getItem('username');
 
   //set navigation bar
-
   var setNavigationBar = function(){
     if(userName==null ||userName=="logout"){
       $("#logoutButton").hide();
@@ -36,6 +34,7 @@ $(document).ready(function(){
       $("#userName").html(userName);
     }};
   setNavigationBar();
+  // 
   var i=1;
   var addGroupFunc = function(groupName, groupNotes, groupID){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
@@ -56,7 +55,7 @@ $(document).ready(function(){
         }
       }};
   
-  //add all the groups
+  //add all the groups;
   if(userName!=null){
     sendGetAllGroupsRequest(userName, addGroupsFunc);
   }

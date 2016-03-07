@@ -63,43 +63,41 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
         	alert(ajaxContext.responseText)
   		}
 	});
+};
 
-}
+var sendGetAllGroupsRequest = function(userName, addGroupsFunc){
+		console.log("send get all groups request",userName);
+		$.ajax({
+		  	url:'http://localhost:8080/hahiti/allGroups/'+userName,
+		   	method : "GET",
+		   	success: function(data) {
+		   		console.log('success get all groups',userName,data);
+				addGroupsFunc(data);	   		
+		   	},
+		   	error: function (ajaxContext) {
+	        	alert(ajaxContext.responseText)
+	  		}
+		});
+};
 
- var sendGetAllGroupsRequest = function(userName, addGroupsFunc){
-	console.log("send get all groups request",userName);
-	$.ajax({
-	  	url:'http://localhost:8080/hahiti/allGroups/'+userName,
-	   	method : "GET",
-	   	success: function(data) {
-	   		console.log('success get all groups',userName,data);
-			addGroupsFunc(data);	   		
-	   	},
-	   	error: function (ajaxContext) {
-        	alert(ajaxContext.responseText)
-  		}
-	});
- }
+var sendAddNewStudentRequest = function(id, name, phone, email, groupid, addStudentFunc){
 
- var sendAddNewStudentRequest = function(id, name, phone, email, groupid, addStudentFunc){
+	 	console.log("send add new student request request",id,name,groupid);
+		$.ajax({
+		  	url:'http://localhost:8080/hahiti/students/'+id,
+		   	method : "POST",
+		   	data : '{"Id":"'+id+'","Name":"'+name+'","Phone":"'+phone+'","Email":"'+email+'","GroupId":"'+groupid+'","ImageURL":""'+'}',
+		   	success: function(data) {
+		   		console.log('success add new student',id,name,groupid,data);
+				addStudentFunc(id, name, phone, email, "0", "0", "0");	   		
+		   	},
+		   	error: function (ajaxContext) {
+	        	alert(ajaxContext.responseText)
+	  		}
+		});
+};
 
- 	console.log("send add new student request request",id,name,groupid);
-	$.ajax({
-	  	url:'http://localhost:8080/hahiti/students/'+id,
-	   	method : "POST",
-	   	data : '{"Id":"'+id+'","Name":"'+name+'","Phone":"'+phone+'","Email":"'+email+'","GroupId":"'+groupid+'","ImageURL":""'+'}',
-	   	success: function(data) {
-	   		console.log('success add new student',id,name,groupid,data);
-			addStudentFunc(id, name, phone, email, "0", "0", "0");	   		
-	   	},
-	   	error: function (ajaxContext) {
-        	alert(ajaxContext.responseText)
-  		}
-	});
-
- }
-
- var sendDeleteGroupRequest = function(groupID, owner, refreshTable){
+var sendDeleteGroupRequest = function(groupID, owner, refreshTable){
  	console.log("send delete group request",groupID);
 	$.ajax({
 	  	url:'http://localhost:8080/hahiti/groups/'+owner+','+groupID,
@@ -112,10 +110,9 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
         	alert(ajaxContext.responseText)
   		}
 	});
- }
+};
 
- 
- var sendDeleteStudentRequest = function(studentID, groupID, refreshTable){
+var sendDeleteStudentRequest = function(studentID, groupID, refreshTable){
  	console.log("send delete Student request",groupID);
 	$.ajax({
 	  	url:'http://localhost:8080/hahiti/students/'+studentID+','+groupID,
@@ -128,7 +125,7 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
         	alert(ajaxContext.responseText)
   		}
 	});
- }
+};
 
 var sendGetAllReportRequest = function(userName, addReportsFunc){
 	console.log("send get all reports request",userName);
@@ -143,4 +140,24 @@ var sendGetAllReportRequest = function(userName, addReportsFunc){
         	alert(ajaxContext.responseText)
   		}
 	});
- }
+};
+
+var sendDeleteReportRequest = function(groupID, owner, date, refreshTable){
+ 	console.log("send delete report request",groupID);
+	$.ajax({
+	  	url:'http://localhost:8080/hahiti/reports/'+owner+','+groupID+','+date,
+	   	method : "DELETE",
+	   	success: function(data) {
+	   		console.log('success delete reprot',groupID, owner, date, data);
+  			refreshTable();
+	   	},
+	   	error: function (ajaxContext) {
+        	alert(ajaxContext.responseText)
+  		}
+	});
+};
+
+
+
+
+

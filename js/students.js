@@ -1,7 +1,7 @@
 
 var refreshTable = function(){
   //just a note
-   window.location.replace("group.html");
+   window.location.replace("students.html");
  };
 
 var deleteStudent = function(studentId){

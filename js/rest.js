@@ -112,5 +112,6 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
         	alert(ajaxContext.responseText)
   		}
 	});
-
  }
+
+ //sendDeleteStudentRequest

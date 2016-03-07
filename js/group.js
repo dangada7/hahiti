@@ -36,6 +36,8 @@ $(document).ready(function(){
                         '<td>' + present + '</td>' +
                         '<td>' + late + '</td>' +
                         '<td>' + missing + '</td>'
+                        '<td> <a onclick="sendDeleteStudentRequest()" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
+                             '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
                         );
 
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');

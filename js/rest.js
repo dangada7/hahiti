@@ -99,10 +99,10 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 
  }
 
- var sendDeleteGroupRequest = function(groupID, refreshTable){
+ var sendDeleteGroupRequest = function(groupID, owner, refreshTable){
  	console.log("send delete group request",groupID);
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/groups/'+groupID,
+	  	url:'http://localhost:8080/hahiti/groups/'+owner+','+groupID,
 	   	method : "DELETE",
 	   	success: function(data) {
 	   		console.log('success',groupID,data);

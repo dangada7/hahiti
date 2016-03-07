@@ -1,9 +1,15 @@
 
-var goToGroupPage = function(groupName,groupNotes,groupID){
+var goToStudentsPage = function(groupName,groupNotes,groupID){
     sessionStorage.setItem("groupName",groupName);
     sessionStorage.setItem("groupNotes",groupNotes);
     sessionStorage.setItem("groupID",groupID);
-    window.location.replace("group.html");
+    window.location.replace("students.html");
+};
+var goToSendReportPage = function(groupName,groupNotes,groupID){
+    sessionStorage.setItem("groupName",groupName);
+    sessionStorage.setItem("groupNotes",groupNotes);
+    sessionStorage.setItem("groupID",groupID);
+    window.location.replace("sendReport.html");
 };
 var refreshTable = function(){
     //just a note
@@ -17,6 +23,7 @@ var editGroup = function(groupName, groupNotes, groupID){
   $("#editGroup").show();
   $("#editGroupHeading").html("Edit Group-" + groupName + ", Group Notes-"+ groupNotes); 
 }
+
 
 //document ready:
 $(document).ready(function(){
@@ -40,9 +47,10 @@ $(document).ready(function(){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
                         '<td>' + groupName + '</td>' + 
                         '<td>' + groupNotes + '</td>' +
-                        '<td> <a onclick="deleteGroup(\''+groupID+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
-                              '<a onclick="editGroup(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>' +
-                              '<a onclick="goToGroupPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-default"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
+                        '<td> <a onclick="deleteGroup(\''+groupID+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>  '+
+                              '<a onclick="editGroup(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>  ' +
+                              '<a onclick="goToSendReportPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-warning"> <span class="glyphicon glyphicon-ok"></span></a>  ' +
+                              '<a onclick="goToStudentsPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-info"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
 
       $('#tab_logic').append('<tr id="addr'+ (i+1) +'" class="text-center"></tr>');
       i++; };

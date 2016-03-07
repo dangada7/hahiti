@@ -9,7 +9,6 @@ var deleteReport = function(groupID,date){
   sendDeleteReportRequest(groupID, owner, date, refreshTable);
 }
 
-
 //documnet ready
 $(document).ready(function(){
   
@@ -25,9 +24,7 @@ $(document).ready(function(){
         $("#userName").html(userName);
       } };
   setNavigationBar();
-  
-
-
+  //
   var i=1;
   var addReportFunc = function(date, GroupName, Summary, groupId){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
@@ -52,21 +49,17 @@ $(document).ready(function(){
         }
       }
   };
-
   //proxy data
   addReportFunc("date",  "groupName", "Summary");
-
   //get all reports
   if(userName!=null){
     sendGetAllReportRequest(userName, addReportsFunc);
   }
-
-
   //add new report
- $("#add_row").click(function(){
+  $("#add_row").click(function(){
 
+     //sendAddNewReportRequest(userName, GroupId, GroupName, Summary, addReportFunc);
   });
-
    //log out button
   $("#logoutButton").click( function(){
     //note

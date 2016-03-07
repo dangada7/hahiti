@@ -1,10 +1,12 @@
 
+var BaseURL = "http://localhost:8080/hahiti";
+
 var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	console.log(userName, password, name, email);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/users',
+	  	url:BaseURL + '/users',
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"'+defualtSetting+'"}',
 	   	success: function(data) {
@@ -21,7 +23,7 @@ var sendSigninRequest = function(userName, password, loginFunc){
 	console.log(userName, password);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/login',
+	  	url:BaseURL + '/login',
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
@@ -37,7 +39,7 @@ var sendSigninRequest = function(userName, password, loginFunc){
 var sendGetAllStudentRequest = function(groupID,addStudents){
 	console.log("send get all student request",groupID);
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/allStudents/'+groupID,
+	  	url:BaseURL + '/allStudents/'+groupID,
 	   	method : "GET",
 	   	success: function(data) {
 	   		console.log('success get all students',data,groupID);
@@ -52,7 +54,7 @@ var sendGetAllStudentRequest = function(groupID,addStudents){
 var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 	console.log("send add new group request",groupName, groupNotes, userName, addGroupFunc);
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/groups',
+	  	url:BaseURL + '/groups',
 	   	method : "POST",
 	   	data : '{"Name":"'+groupName+'","Description":"'+groupNotes+'","Owner":"'+userName+'","ImageURL":""'+'}',
 	   	success: function(data) {
@@ -68,7 +70,7 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,addGroupFunc){
 var sendGetAllGroupsRequest = function(userName, addGroupsFunc){
 		console.log("send get all groups request",userName);
 		$.ajax({
-		  	url:'http://localhost:8080/hahiti/allGroups/'+userName,
+		  	url:BaseURL + '/allGroups/'+userName,
 		   	method : "GET",
 		   	success: function(data) {
 		   		console.log('success get all groups',userName,data);
@@ -84,7 +86,7 @@ var sendAddNewStudentRequest = function(id, name, phone, email, groupid, addStud
 
 	 	console.log("send add new student request request",id,name,groupid);
 		$.ajax({
-		  	url:'http://localhost:8080/hahiti/students/'+id,
+		  	url:BaseURL + '/students/'+id,
 		   	method : "POST",
 		   	data : '{"Id":"'+id+'","Name":"'+name+'","Phone":"'+phone+'","Email":"'+email+'","GroupId":"'+groupid+'","ImageURL":""'+'}',
 		   	success: function(data) {
@@ -100,7 +102,7 @@ var sendAddNewStudentRequest = function(id, name, phone, email, groupid, addStud
 var sendDeleteGroupRequest = function(groupID, owner, refreshTable){
  	console.log("send delete group request",groupID);
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/groups/'+owner+','+groupID,
+	  	url:BaseURL + '/groups/'+owner+','+groupID,
 	   	method : "DELETE",
 	   	success: function(data) {
 	   		console.log('success delete group',groupID,data);
@@ -115,7 +117,7 @@ var sendDeleteGroupRequest = function(groupID, owner, refreshTable){
 var sendDeleteStudentRequest = function(studentID, groupID, refreshTable){
  	console.log("send delete Student request",groupID);
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/students/'+studentID+','+groupID,
+	  	url:BaseURL + '/students/'+studentID+','+groupID,
 	   	method : "DELETE",
 	   	success: function(data) {
 	   		console.log('success delete Student',studentID,groupID,data);
@@ -130,7 +132,7 @@ var sendDeleteStudentRequest = function(studentID, groupID, refreshTable){
 var sendGetAllReportRequest = function(userName, addReportsFunc){
 	console.log("send get all reports request",userName);
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/allReports/'+userName,
+	  	url:BaseURL + '/allReports/'+userName,
 	   	method : "GET",
 	   	success: function(data) {
 	   		console.log('success get all reports',userName,data);
@@ -145,7 +147,7 @@ var sendGetAllReportRequest = function(userName, addReportsFunc){
 var sendDeleteReportRequest = function(groupID, owner, date, refreshTable){
  	console.log("send delete report request",groupID);
 	$.ajax({
-	  	url:'http://localhost:8080/hahiti/reports/'+owner+','+groupID+','+date,
+	  	url:BaseURL + '/reports/'+owner+','+groupID+','+date,
 	   	method : "DELETE",
 	   	success: function(data) {
 	   		console.log('success delete reprot',groupID, owner, date, data);
@@ -157,7 +159,22 @@ var sendDeleteReportRequest = function(groupID, owner, date, refreshTable){
 	});
 };
 
+var sendAddNewReportRequest = function(ownerName, GroupId, GroupName, Summary, addReportFunc){
 
+	 	console.log("send add new report request",ownerName,GroupId,GroupName,Summary);
+		$.ajax({
+		  	url:BaseURL + '/reports',
+		   	method : "POST",
+		   	data : '{"Submitter":"'+ownerName+'","GroupId":"'+GroupId+'","GroupName":"'+GroupName+'","Summary":"'+Summary+'}',
+		   	success: function(data) {
+		   		console.log('success add new report',ownerName,GroupId,GroupName,Summary,data);
+				addReportFunc("now",GroupName, Summary,GroupId);  		
+		   	},
+		   	error: function (ajaxContext) {
+	        	alert(ajaxContext.responseText)
+	  		}
+		});
+};
 
 
 

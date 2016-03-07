@@ -9,37 +9,36 @@ var deleteStudent = function(studentId){
   sendDeleteStudentRequest(studentId, groupID, refreshTable);
 }
 
+var editStudent = function(groupName, groupNotes, groupID){
+  $("#editGroup").show();
+ //$("#editGroupHeading").html("Edit Group-" + groupName + ", Group Notes-"+ groupNotes); 
+}
+
 
 //document ready
 $(document).ready(function(){
  
   //get user name
   var userName = sessionStorage.getItem('username');
-
-
-  if(userName==null ||userName=="logout"){
-    $("#logoutButton").hide();
-  }else{
-    $("#loginButton").hide();
-    $("#signupButton").hide();
-    $("#userName").html(userName);
-  }
-  
-  $("#logoutButton").click( function(){
-    sessionStorage.removeItem('username');
-  });
-
+  //set navigation bar
+  var setNavigationBar = function(){
+     if(userName==null ||userName=="logout"){
+        $("#logoutButton").hide();
+      }else{
+        $("#loginButton").hide();
+        $("#signupButton").hide();
+        $("#userName").html(userName);
+      }
+  };
+  setNavigationBar();
 
   // 
   var groupName = sessionStorage.getItem("groupName");
   var GroupNotes = sessionStorage.getItem("groupNotes");
   var groupID   = sessionStorage.getItem("groupID");
-
   var i=1;
-
   $("#titleText").html(groupName);
   $("#note").html(GroupNotes);
-
   //add one student
   var addStudentFunc = function(studentId,studentName,studentPhone,studentEmail, present, late, missing ){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
@@ -51,16 +50,12 @@ $(document).ready(function(){
                         '<td>' + late + '</td>' +
                         '<td>' + missing + '</td>' +
                         '<td> <a onclick="deleteStudent(\''+studentId+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>' +
-                             '<a href="#" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>'
+                             '<a onclick="editStudent()" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a>'
                         );
 
       $('#tab_logic').append('<tr id="addr'+(i+1)+'" class="text-center"></tr>');
       i++; 
   };
-
-
-  addStudentFunc("studentId","studentName","studentPhone","studentEmail", "present", "late", "missing");
-
   //add all the students in data (json) 
   var addStudentsFunc = function(data){
       var students = jQuery.parseJSON(data);
@@ -70,10 +65,10 @@ $(document).ready(function(){
          addStudentFunc(students[j].Id, students[j].Name, students[j].Phone, students[j].Email, students[j].Present, students[j].Late, students[j].Missing);
       }
   }
-
-  if(userName!=null)
+  //insert to the table all students
+  if(userName!=null){
     sendGetAllStudentRequest(groupID,addStudentsFunc);
-
+  }
   // add new student
   $("#add_row").click(function(){
     var studentId  = $("#student_id_input").val();
@@ -88,6 +83,17 @@ $(document).ready(function(){
 
     sendAddNewStudentRequest(studentId,studentName,studentPhone,studentEmail,groupID, addStudentFunc);
   });
+  // logout
+  $("#logoutButton").click( function(){
+    //note
+    sessionStorage.removeItem('username');
+  });
+
+
+
+
+  //proxy
+  addStudentFunc("studentId","studentName","studentPhone","studentEmail", "present", "late", "missing");
 
 
 });

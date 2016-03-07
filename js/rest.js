@@ -90,7 +90,7 @@ var sendAddNewStudentRequest = function(id, name, phone, email, groupid, addStud
 		$.ajax({
 		  	url:BaseURL + '/students/'+id,
 		   	method : "POST",
-		   	data : '{"Name":"'+name+'","Phone":"'+phone+'","Email":"'+email+'","GroupId":"'+groupid+'","ImageURL":""'+'}',
+		   	data : '{ "Id":"'+id+'","Name":"'+name+'","Phone":"'+phone+'","Email":"'+email+'","GroupId":"'+groupid+'","ImageURL":""'+'}',
 		   	success: function(data) {
 		   		console.log('success add new student',id,name,groupid,data);
 				addStudentFunc(id, name, phone, email, "0", "0", "0");	   		

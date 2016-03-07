@@ -36,10 +36,10 @@ $(document).ready(function(){
   var groupName = sessionStorage.getItem("groupName");
   var GroupNotes = sessionStorage.getItem("groupNotes");
   var groupID   = sessionStorage.getItem("groupID");
-  
+
   var i=1;
   $("#titleText").html(groupName);
-  $("#note").html(groupID);
+  $("#note").html(GroupNotes);
   //add one student
   var addStudentFunc = function(studentId,studentName,studentPhone,studentEmail, present, late, missing ){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
@@ -82,7 +82,7 @@ $(document).ready(function(){
     $("#student_phone_input").val("");
     $("#student_email_input").val("");
 
-    sendAddNewStudentRequest(studentId,studentName,studentPhone,studentEmail,groupID, addStudentFunc);
+    sendAddNewStudentRequest(studentId,studentName,studentEmail,studentPhone,groupID, addStudentFunc);
   });
   // logout
   $("#logoutButton").click( function(){

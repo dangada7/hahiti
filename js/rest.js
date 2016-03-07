@@ -54,7 +54,7 @@ var sendGetAllStudentRequest = function(groupID,addStudents){
 };
 
 var sendAddGroupRequest = function(groupName,groupNotes,userName,refreshTable){
-	console.log("send add new group request",groupName, groupNotes, userName, addGroupFunc);
+	console.log("send add new group request",groupName, groupNotes, userName);
 	$.ajax({
 	  	url:BaseURL + '/groups',
 	   	method : "POST",

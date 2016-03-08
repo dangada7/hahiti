@@ -6,7 +6,7 @@ var BaseURL = "http://hahiti.cloudapp.net";
 
 //sign in + login
 var sendSignupRequest = function(userName, password, name, email, loginFunc){
-	console.log(userName, password, name, email);
+	//console.log("send SignUp Request:"," userName="+userName, ", password="+password, ", name="+name, ", email="+email);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 
 	$.ajax({
@@ -14,7 +14,7 @@ var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"'+defualtSetting+'"}',
 	   	success: function(data) {
-	   		console.log('success signup',userName,data);
+	   		//console.log('success SignUp:'," userName="+userName,", data="+data);
 	   		loginFunc(userName);
 	   	},
 	   	error: function (ajaxContext) {
@@ -23,14 +23,14 @@ var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	});
 };
 var sendLoginRequest = function(userName, password, loginFunc){
-	console.log(userName, password);
+	//console.log("send Login Request: "," userName="+userName, ", password="+password);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 	$.ajax({
 	  	url:BaseURL + '/login',
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
-	   		console.log('success login',userName,data);
+	   		//console.log('success login:'," userName="+userName,", data="+data);
 			loginFunc(userName, data);
 	   	},
 	   	error: function (ajaxContext) {
@@ -40,13 +40,13 @@ var sendLoginRequest = function(userName, password, loginFunc){
 };
 //groups
 var sendAddGroupRequest = function(groupName,groupNotes,userName,refreshTable){
-	console.log("send add new group request",groupName, groupNotes, userName);
+	console.log("send add new group request: ","groupName="+groupName, ",groupNotes="+groupNotes, ",userName="+userName);
 	$.ajax({
 	  	url:BaseURL + '/groups',
 	   	method : "POST",
 	   	data : '{"Name":"'+groupName+'","Description":"'+groupNotes+'","Owner":"'+userName+'","ImageURL":""'+'}',
 	   	success: function(data) {
-	   		console.log('successadd new group',data,groupName,groupNotes);
+	   		console.log('success add new group,',"groupName-"+groupName,",groupNotes-"+groupNotes,",userName-"+userName,",data-"+data);
 	   		refreshTable();
 	   	},
 	   	error: function (ajaxContext) {
@@ -55,12 +55,12 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,refreshTable){
 	});
 };
 var sendGetAllGroupsRequest = function(userName, addGroupsFunc){
-		console.log("send get all groups request",userName);
+		console.log("send get all groups request"," userName="+userName);
 		$.ajax({
 		  	url:BaseURL + '/allGroups/'+userName,
 		   	method : "GET",
 		   	success: function(data) {
-		   		console.log('success get all groups',userName,data);
+		   		console.log('success get all groups'," userName="+userName,", data="+data);
 				addGroupsFunc(data);	   		
 		   	},
 		   	error: function (ajaxContext) {

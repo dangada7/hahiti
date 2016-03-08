@@ -78,6 +78,19 @@ $(document).ready(function(){
     sendAddGroupRequest(groupName,groupNotes,userName, refreshTable);
   });
 
+
+  //set the add row button - on click
+  $("#addGroupForm").submit(function(){
+    var groupName  = $("#group_input").val();
+    var groupNotes = $("#note_input").val();
+    $("#group_input").val("");
+    $("#note_input").val("");
+
+    sendAddGroupRequest(groupName,groupNotes,userName, refreshTable);
+  });
+
+  addGroupForm
+
   //set the logout button - on click
   $("#logoutButton").click( function(){
         sessionStorage.removeItem('username');

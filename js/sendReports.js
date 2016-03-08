@@ -2,17 +2,15 @@
 var refreshFunc = function(){
   //just a note
    window.location.replace("reports.html");
- };
-
+};
 var deleteStudent = function(studentId){
   var groupID   = sessionStorage.getItem("groupID");
   sendDeleteStudentRequest(studentId, groupID, refreshTable);
-}
-
+};
 var editStudent = function(groupName, groupNotes, groupID){
   $("#editGroup").show();
  //$("#editGroupHeading").html("Edit Group-" + groupName + ", Group Notes-"+ groupNotes); 
-}
+};
 
 
 //document ready
@@ -20,25 +18,25 @@ $(document).ready(function(){
  
   //get user name
   var userName = sessionStorage.getItem('username');
-  //set navigation bar
-  var setNavigationBar = function(){
-     if(userName==null ||userName=="logout"){
-        $("#logoutButton").hide();
-      }else{
-        $("#loginButton").hide();
-        $("#signupButton").hide();
-        $("#userName").html(userName);
-      }
-  };
-  setNavigationBar();
-
-  // 
   var groupName = sessionStorage.getItem("groupName");
   var GroupNotes = sessionStorage.getItem("groupNotes");
   var groupID   = sessionStorage.getItem("groupID");
   var i=1;
-  $("#titleText").html(groupName);
-  $("#note").html(GroupNotes);
+
+  //set navigation bar
+  var setNavigationBar = function(){
+    $("#titleText").html(groupName);
+    $("#note").html(GroupNotes);
+    if(userName==null ||userName=="logout"){
+      $("#logoutButton").hide();
+    }else{
+      $("#loginButton").hide();
+      $("#signupButton").hide();
+      $("#userName").html(userName);
+    }
+  };
+  setNavigationBar();
+
   //add one student
   var addStudentFunc = function(studentId,studentName,studentPhone,studentEmail){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
@@ -103,7 +101,6 @@ $(document).ready(function(){
 
 	    sendAddNewReportRequest(userName, groupID, groupName, summary, refreshFunc);
   });
-
 });
 
 

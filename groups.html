@@ -127,30 +127,48 @@
     </div>
 
 	<!-- add new group -->
-    <div class="container-fluid">
-    	<div class="panel panel-default">
 
-			<div id="title3" class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Add new group</h3>
-			</div>
-			
-			<div class="panel-body">
+ 	<!-- login-->
+	    <div class="container-fluid">
+	    	<div class="panel panel-default">
+			      	<div id="title" class="panel-heading">
+				        Add New Group
+					</div>
+					<div class="panel-body">
+				        <div class="span12">
+				            <div class="span6">
+				               <form id="addGroupForm" class="form-horizontal" >
+					                        <!--username -->
+					                        <div class="control-group">
 
-				<div class="input-group input-group-lg">
-				  <span class="input-group-addon">Group Name</span>
-				  <input id="group_input" type="text" class="form-control" placeholder="group name">
-				</div>
+					                            <label class="control-label" >Group Name:</label>
 
-				<div class="input-group input-group-lg">
-				  <span class="input-group-addon">Notes</span>
-				  <input id="note_input" type="text" class="form-control" placeholder="description">
-				</div><br>
+					                            <div class="controls">
+					                            	<input required="" class="form-control" id="group_input" type="text"  placeholder="E.g. Math">
+					                            </div>
+					                        </div>
 
+					                        <!--password -->
+					                        <div class="control-group">
+					                            <label class="control-label" >Notes:</label>
+					                            <div class="controls">
+					                            	<input required="" class="form-control" id="note_input" type="text" placeholder="i love this group">
+					                            </div>
+					                        </div><br>
 
-				<a id="add_row" class="btn-lg btn-success ">Add new Group</a>
+					                        <div class="control-group">
+					                            <div class="controls">
+					                                <button class="btn-lg btn-success" type="submit">Add New Group</button> 
+					                            </div>
+					                        </div>
+
+			                    	</form>
+			            	</div>
+			            </div>
+			        </div>
+			   
 			</div>
 		</div>
-    </div>
 
 
  	<!-- scripts -->

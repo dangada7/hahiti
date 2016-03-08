@@ -15,13 +15,14 @@ $(document).ready(function(){
 	});
 
 
-	var loginFunc = function(userName){
-	   	sessionStorage.setItem("username",userName);
-	   	window.location.replace("home.html");
+	var loginFunc = function(userName,data){
+		if(data == "OK"){
+		   	sessionStorage.setItem("username",userName);
+		   	window.location.replace("home.html");
+	   }else{
+	   	alert(data);
+	   }
 	} 
-
-
-
 
 	$("#login_form").submit(function(){
 		// Stop form from submitting normally
@@ -30,8 +31,8 @@ $(document).ready(function(){
 		var username = $("#signin_inputUser").val();
 		var password = $("#signin_inputPassword").val();
 
-		sendSigninRequest(username,password,loginFunc);
-
+		sendLoginRequest(username,password,loginFunc);
 	});
+
 
 });

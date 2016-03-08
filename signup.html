@@ -14,6 +14,13 @@
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 
+		<style>
+		#title{
+		    background-color:#067354;
+		    color:white;
+		}
+		</style>
+
 	</haed>
 
 	<!-- body -->
@@ -45,76 +52,63 @@
 	      </div>
 	    </nav>
 
-	    <!-- sign up-->
+		<!-- signup-->
 	    <div class="container">
-	    	<div class="jumbotron">
-			    <div class="row-fluid">
+	    	<div class="panel panel-default">
+			      	<div id="title" class="panel-heading">
+				        <h3>Sign Up </h3>
+					</div>
+					<div class="panel-body">
+				        <div class="span12">
+				            <div class="span6">
+				               <form id="signup_form" class="form-horizontal" >
+					                <!--name -->
+					                <div class="control-group">
+						                <label class="control-label" for="inputName"><h4>Name:</h4></label>
+						                <div class="controls">
+						                   <input required="" class="form-control" id="inputName" type="text" name="Name" placeholder="E.g. Ashwin">
+						                </div>
+						            </div>
 
-			        <div class="span12">
-			            <div class="span6">
-			                <div class="area">
-			                    <form id="signup_form" class="form-horizontal" >
-			                        <div class="heading">
-			                            <h4 class="form-heading">Sign Up</h4>
-			                        </div>
+						            <!--email -->
+					                <div class="control-group">
+						                <label class="control-label" for="inputEmail"><h4>Email:</h4></label>
+						                <div class="controls">
+						                   <input required="" class="form-control" id="inputEmail" type="text" name="email" placeholder="E.g. ashwinh@cybage.com">
+						                </div>
+						            </div>
 
-			                        <!--name -->
+
+						            <!--username -->
+					                <div class="control-group">
+						                <label class="control-label" for="inputUser"><h4>Username:</h4></label>
+						                <div class="controls">
+						                  <input required="" class="form-control" id="inputUser" type="text" name="Username" placeholder="E.g. ashwinhegde">
+						                </div>
+						            </div>
+
+						            <!--password -->
+					                <div class="control-group">
+						                <label class="control-label" for="inputPassword"><h4>password:</h4></label>
+						                <div class="controls">
+						                   <input required="" class="form-control" id="signin_inputUser" type="password" name="Password" placeholder="Min. 8 Characters">
+						                </div>
+						            </div><br>
+
 			                        <div class="control-group">
-			                            <label class="control-label" for="inputFirst">Name</label>
-
-			                            <div class="controls">
-			                                <input required="" id="inputName" name="Name" placeholder="E.g. Ashwin" type="text">
+			                            <div class="controls">  
+			                                <input required type="checkbox">I agree all your <a href="#">Terms of Services</a>
+			                                <br>
+			                                <button class="btn-lg btn-success" type="submit">Sign Up</button>
+			                                <button class="btn-lg btn-warning" type="button">Help</button>
 			                            </div>
 			                        </div>
 
-			                        <!--email -->
-			                        <div class="control-group">
-			                            <label class="control-label" for="inputEmail">Email</label>
-
-			                            <div class="controls">
-			                                <input required="" id="inputEmail" name="email" placeholder="E.g. ashwinh@cybage.com" type="text">
-			                            </div>
-			                        </div>
-
-			                        <!--username -->
-			                        <div class="control-group">
-			                            <label class="control-label" for="inputUser">Username</label>
-
-			                            <div class="controls">
-			                                <input required="" id="inputUser" name="Username" placeholder="E.g. ashwinhegde" type="text">
-			                            </div>
-			                        </div>
-
-			                        <!--password -->
-			                        <div class="control-group">
-			                            <label class="control-label" for="inputPassword">Password</label>
-
-			                            <div class="controls">
-			                                <input required="" id="inputPassword" name="Password" placeholder="Min. 8 Characters" type="password">
-			                            </div>
-			                        </div><br>
-
-			                        <div class="control-group">
-			                            <div class="controls">
-			                                <label class="checkbox">
-			                                	<input required type="checkbox">I agree all your <a href="#">Terms of Services</a>
-			                                </label> 
-			                                <button class="btn btn-success" type="submit">Sign Up</button>
-			                                <button class="btn" type="button">Help</button>
-			                            </div>
-			                        </div>
-<!-- 
-			                        <div class="alert alert-info">
-			                            <button class="close" data-dismiss="alert" type="button">×</button> 
-			                            <strong>Confirmation:</strong>
-			                            A confirmation email has been sent to your email.<br>
-			                            Thank you for your registration.
-			                        </div> -->
-			                    </form>
-			                </div>
+			                    	</form>
+			            	</div>
 			            </div>
 			        </div>
-			    </div>
+			   
 			</div>
 		</div>
 

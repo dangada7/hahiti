@@ -3,12 +3,14 @@
 
 var BaseURL = "http://hahiti.cloudapp.net";
 
+
+//sign in + login
 var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	console.log(userName, password, name, email);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 
 	$.ajax({
-	  	url:BaseURL + '/users',
+	  	url:BaseURL + '/users/'+userName,
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"'+defualtSetting+'"}',
 	   	success: function(data) {
@@ -20,8 +22,7 @@ var sendSignupRequest = function(userName, password, name, email, loginFunc){
   		}
 	});
 };
-
-var sendSigninRequest = function(userName, password, loginFunc){
+var sendLoginRequest = function(userName, password, loginFunc){
 	console.log(userName, password);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 	$.ajax({
@@ -30,29 +31,14 @@ var sendSigninRequest = function(userName, password, loginFunc){
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
 	   		console.log('success login',userName,data);
-			loginFunc(userName);
+			loginFunc(userName, data);
 	   	},
 	   	error: function (ajaxContext) {
         	alert(ajaxContext.responseText)
   		}
 	});
 };
-
-var sendGetAllStudentRequest = function(groupID,addStudents){
-	console.log("send get all student request",groupID);
-	$.ajax({
-	  	url:BaseURL + '/allStudents/'+groupID,
-	   	method : "GET",
-	   	success: function(data) {
-	   		console.log('success get all students',data,groupID);
-			addStudents(data);	   		
-	   	},
-	   	error: function (ajaxContext) {
-        	alert(ajaxContext.responseText)
-  		}
-	});
-};
-
+//groups
 var sendAddGroupRequest = function(groupName,groupNotes,userName,refreshTable){
 	console.log("send add new group request",groupName, groupNotes, userName);
 	$.ajax({
@@ -68,7 +54,6 @@ var sendAddGroupRequest = function(groupName,groupNotes,userName,refreshTable){
   		}
 	});
 };
-
 var sendGetAllGroupsRequest = function(userName, addGroupsFunc){
 		console.log("send get all groups request",userName);
 		$.ajax({
@@ -83,7 +68,35 @@ var sendGetAllGroupsRequest = function(userName, addGroupsFunc){
 	  		}
 		});
 };
-
+var sendDeleteGroupRequest = function(groupID, owner, refreshTable){
+ 	console.log("send delete group request",groupID);
+	$.ajax({
+	  	url:BaseURL + '/groups/'+owner+','+groupID,
+	   	method : "DELETE",
+	   	success: function(data) {
+	   		console.log('success delete group',groupID,data);
+  			refreshTable();
+	   	},
+	   	error: function (ajaxContext) {
+        	alert(ajaxContext.responseText)
+  		}
+	});
+};
+//student
+var sendGetAllStudentRequest = function(groupID,addStudents){
+	console.log("send get all student request",groupID);
+	$.ajax({
+	  	url:BaseURL + '/allStudents/'+groupID,
+	   	method : "GET",
+	   	success: function(data) {
+	   		console.log('success get all students',data,groupID);
+			addStudents(data);	   		
+	   	},
+	   	error: function (ajaxContext) {
+        	alert(ajaxContext.responseText)
+  		}
+	});
+};
 var sendAddNewStudentRequest = function(id, name, phone, email, groupid, addStudentFunc){
 
 	 	console.log("send add new student request request",id,name,groupid);
@@ -100,22 +113,6 @@ var sendAddNewStudentRequest = function(id, name, phone, email, groupid, addStud
 	  		}
 		});
 };
-
-var sendDeleteGroupRequest = function(groupID, owner, refreshTable){
- 	console.log("send delete group request",groupID);
-	$.ajax({
-	  	url:BaseURL + '/groups/'+owner+','+groupID,
-	   	method : "DELETE",
-	   	success: function(data) {
-	   		console.log('success delete group',groupID,data);
-  			refreshTable();
-	   	},
-	   	error: function (ajaxContext) {
-        	alert(ajaxContext.responseText)
-  		}
-	});
-};
-
 var sendDeleteStudentRequest = function(studentID, groupID, refreshTable){
  	console.log("send delete Student request",studentID,groupID);
 	$.ajax({
@@ -130,7 +127,7 @@ var sendDeleteStudentRequest = function(studentID, groupID, refreshTable){
   		}
 	});
 };
-
+//reports
 var sendGetAllReportRequest = function(userName, addReportsFunc){
 	console.log("send get all reports request",userName);
 	$.ajax({
@@ -145,7 +142,6 @@ var sendGetAllReportRequest = function(userName, addReportsFunc){
   		}
 	});
 };
-
 var sendDeleteReportRequest = function(groupID, owner, date, refreshTable){
  	console.log("send delete report request",groupID);
 	$.ajax({
@@ -160,7 +156,6 @@ var sendDeleteReportRequest = function(groupID, owner, date, refreshTable){
   		}
 	});
 };
-
 var sendAddNewReportRequest = function(ownerName, GroupId, GroupName, Summary, refreshFunc){
 
 	 	console.log("send add new report request",ownerName,GroupId,GroupName,Summary);
@@ -177,4 +172,20 @@ var sendAddNewReportRequest = function(ownerName, GroupId, GroupName, Summary, r
 	  		}
 		});
 };
+//iamge
+var sendUploadGroupImage = function(ownerName, GroupId, GroupName, Summary, refreshFunc){
 
+	 	console.log("send add new report request",ownerName,GroupId,GroupName,Summary);
+		$.ajax({
+		  	url:BaseURL + '/reports',
+		   	method : "PUT",
+		   	data : '{"Submitter":"'+ownerName+'","GroupId":"'+GroupId+'","GroupName":"'+GroupName+'","Summary":"'+Summary+'"}',
+		   	success: function(data) {
+		   		console.log('success add new report',ownerName,GroupId,GroupName,Summary,data);
+				refreshFunc();  		
+		   	},
+		   	error: function (ajaxContext) {
+	        	alert(ajaxContext.responseText)
+	  		}
+		});
+};

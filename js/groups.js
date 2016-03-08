@@ -50,7 +50,7 @@ $(document).ready(function(){
                         '<td> <a onclick="deleteGroup(\''+groupID+'\')" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>  '+
                               '<a onclick="editGroup(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span></a> &nbsp&nbsp' +
                               '<a onclick="goToSendReportPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')"  class="btn btn-warning"> <span class="glyphicon glyphicon-file"></span></a>  ' +
-                              '<a onclick="goToStudentsPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-info"> <span class="glyphicon glyphicon-eye-open"></span></a> </td>' );
+                              '<a onclick="goToStudentsPage(\''+groupName+'\',\''+groupNotes+'\',\''+groupID+'\')" class="btn btn-info"> <span class="glyphicon glyphicon-user"></span></a> </td>' );
 
       $('#tab_logic').append('<tr id="addr'+ (i+1) +'" class="text-center"></tr>');
       i++; };
@@ -68,9 +68,6 @@ $(document).ready(function(){
     sendGetAllGroupsRequest(userName, addGroupsFunc);
   }
  
-  //proxyyyy
-  addGroupFunc("groupname","groupNotes","groupid");
-
   //set the add row button - on click
   $("#add_row").click(function(){
     var groupName  = $("#group_input").val();

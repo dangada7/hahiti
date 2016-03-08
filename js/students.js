@@ -94,8 +94,4 @@ $(document).ready(function(){
 
 
 
-  //proxy
-  addStudentFunc("studentId","studentName","studentPhone","studentEmail", "present", "late", "missing");
-
-
 });

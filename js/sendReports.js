@@ -42,15 +42,15 @@ $(document).ready(function(){
   //add one student
   var addStudentFunc = function(studentId,studentName,studentPhone,studentEmail){
      $('#addr'+i).html( '<td>'+ i  + '</td>' + 
-                        '<td>' + studentId + '</td>' + 
-                        '<td>' + studentName + '</td>' +
+                        '<td id="studentId">' + studentId + '</td>' + 
+                        '<td id="studentName">' + studentName + '</td>' +
                         '<td>' + studentPhone + '</td>' +
                         '<td>' + studentEmail + '</td>' +
                         '<td>' +
 					 		'<div class="btn-group" data-toggle="buttons">'+
-							  '<label class="btn btn-success active"> <input type="radio" name="options" id="Present'+i+'" autocomplete="off" checked> Present <span class="glyphicon glyphicon-ok"></span> </label>'+
-							  '<label class="btn btn-warning">        <input type="radio" name="options" id="Late'+i+'" autocomplete="off"> Late <span class="glyphicon glyphicon-ok"></span> </label>' +
-							  '<label class="btn btn-danger">         <input type="radio" name="options" id="Missing'+i+'" autocomplete="off"> Missing  <span class="glyphicon glyphicon-ok"></span> </label>'+
+							  '<label class="btn btn-success active"> <input type="radio" name="options'+i+'" id="Present'+i+'" autocomplete="off" checked> Present <span class="glyphicon glyphicon-ok"></span> </label>'+
+							  '<label class="btn btn-warning">        <input type="radio" name="options'+i+'" id="Late'+i+'" autocomplete="off"> Late <span class="glyphicon glyphicon-ok"></span> </label>' +
+							  '<label class="btn btn-danger">         <input type="radio" name="options'+i+'" id="Missing'+i+'" autocomplete="off"> Missing  <span class="glyphicon glyphicon-ok"></span> </label>'+
 							'</div>'+
                         '</td>'
                         );
@@ -83,20 +83,26 @@ $(document).ready(function(){
   // logout
   $("#send_report").click( function(){
     
+	    var summary = "";
+	    for(j=1; j<i; j++){
 
-    sendAddNewReportRequest(userName, groupID, groupName, "Summary", refreshFunc);
+			var studentName = $(("#addr" + j)).children('#studentName').html();
+			var studentId = $(("#addr" + j)).children('#studentId').html();
+			var status="status";
 
+			if($(("#addr" + j)).find('#Present'+j).is(':checked')){
+				status = "0";
+			}else if($(("#addr" + j)).find('#Late'+j).is(':checked')){
+				status = "1";
+			}else if($(("#addr" + j)).find('#Missing'+j).is(':checked')){
+				status = "2";
+			}
+
+	    	summary = summary + studentId + "," + status + ","+ studentName "/ ";
+	    }
+
+	    sendAddNewReportRequest(userName, groupID, groupName, summary, refreshFunc);
   });
-
-
-  //proxy
-  addStudentFunc("bla+","studentName","studentPhone","studentEmail");
-    //proxy
-  addStudentFunc("bla+","studentName","studentPhone","studentEmail");
-
-
-
-
 
 });
 

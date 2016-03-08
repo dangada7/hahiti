@@ -15,9 +15,14 @@ $(document).ready(function(){
 	});
 
 
-	var loginFunc = function(userName){
-	   	sessionStorage.setItem("username",userName);
-	   	window.location.replace("home.html");
+	var loginFunc = function(userName,data){
+
+		// if(data == "OK"){
+		   	sessionStorage.setItem("username",userName);
+		   	window.location.replace("home.html");
+		// }else{
+
+		// }
 	} 
 
 	$("#signup_form").submit(function(event){

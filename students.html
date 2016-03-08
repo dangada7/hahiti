@@ -58,8 +58,16 @@
     <div class="container-fluid">
       <!-- jumbotron enlarges fonts and puts everything in a gray box with rounded corners. If jumbotron is outside a container it fills the total width. You can change the styles by placing the changes after thedd Bootstrap CDN link -->
       <div class="jumbotron" id="title">
-      	 <h1 id="titleText">title</h1>
-         <p  id="note">note</p>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+              <h1 id="titleText">title</h1>
+              <p  id="note">note</p>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <img src="group.png" class="img-rounded" alt="Cinque Terre" align="right" >
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -161,22 +169,24 @@
         <div class="panel-body">
 
       		<div class="input-group input-group-lg">
-      		  <span class="input-group-addon">student id</span>
+      		  <span class="input-group-addon">Student Id</span>
       		  <input id="student_id_input" type="text" class="form-control" placeholder="id">
       		</div>
 
-      		<div class="input-group input-group-lg">
-      		  <span class="input-group-addon">name</span>
-      		  <input id="student_name_input" type="text" class="form-control" placeholder="name">
-      		</div>
 
           <div class="input-group input-group-lg">
-            <span class="input-group-addon">phone</span>
+            <span class="input-group-addon">Phone:</span>
             <input id="student_phone_input" type="text" class="form-control" placeholder="phone">
           </div>
 
+
           <div class="input-group input-group-lg">
-            <span class="input-group-addon">email</span>
+            <span class="input-group-addon">Name</span>
+            <input id="student_name_input" type="text" class="form-control" placeholder="name">
+          </div>
+          
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon">Email</span>
             <input id="student_email_input" type="text" class="form-control" placeholder="email">
           </div><br>
 

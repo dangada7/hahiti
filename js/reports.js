@@ -49,8 +49,7 @@ $(document).ready(function(){
         }
       }
   };
-  //proxy data
-  addReportFunc("date",  "groupName", "Summary");
+
   //get all reports
   if(userName!=null){
     sendGetAllReportRequest(userName, addReportsFunc);
@@ -66,5 +65,7 @@ $(document).ready(function(){
     sessionStorage.removeItem('username');
   });
 
+  //proxy data
+  // addReportFunc("date",  "groupName", "Summary");
 
 });

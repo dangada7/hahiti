@@ -84,19 +84,19 @@ $(document).ready(function(){
 	    var summary = "";
 	    for(j=1; j<i; j++){
 
-			var studentName = $(("#addr" + j)).children('#studentName').html();
-			var studentId = $(("#addr" + j)).children('#studentId').html();
-			var status="status";
+  			var studentName = $(("#addr" + j)).children('#studentName').html();
+  			var studentId = $(("#addr" + j)).children('#studentId').html();
+  			var status="status";
 
-			if($(("#addr" + j)).find('#Present'+j).is(':checked')){
-				status = "0";
-			}else if($(("#addr" + j)).find('#Late'+j).is(':checked')){
-				status = "1";
-			}else if($(("#addr" + j)).find('#Missing'+j).is(':checked')){
-				status = "2";
-			}
+  			if($(("#addr" + j)).find('#Present'+j).is(':checked')){
+  				status = "0";
+  			}else if($(("#addr" + j)).find('#Late'+j).is(':checked')){
+  				status = "1";
+  			}else if($(("#addr" + j)).find('#Missing'+j).is(':checked')){
+  				status = "2";
+  			}
 
-	    	summary = summary + studentId + "," + status + ","+ studentName "/ ";
+  	    	summary = summary + studentId + "," + status + ","+ studentName + "/ ";
 	    }
 
 	    sendAddNewReportRequest(userName, groupID, groupName, summary, refreshFunc);

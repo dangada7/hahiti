@@ -1,12 +1,11 @@
 
-var BaseURL = "http://localhost:8080/hahiti";
+//var BaseURL = "http://localhost:8080/hahiti";
 
-//var BaseURL = "http://hahiti.cloudapp.net";
-
+var BaseURL = "http://hahiti.cloudapp.net";
 
 //sign in + login
 var sendSignupRequest = function(userName, password, name, email, loginFunc){
-	//console.log("send SignUp Request:"," userName="+userName, ", password="+password, ", name="+name, ", email="+email);
+	console.log("send SignUp Request:"," userName="+userName, ", password="+password, ", name="+name, ", email="+email);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 
 	$.ajax({
@@ -14,7 +13,7 @@ var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'","Name":"'+name+'","Email":"'+email+'","Settings":"'+defualtSetting+'"}',
 	   	success: function(data) {
-	   		//console.log('success SignUp:'," userName="+userName,", data="+data);
+	   		console.log('success SignUp:'," userName="+userName,", data="+data);
 	   		loginFunc(userName);
 	   	},
 	   	error: function (ajaxContext) {
@@ -23,14 +22,14 @@ var sendSignupRequest = function(userName, password, name, email, loginFunc){
 	});
 };
 var sendLoginRequest = function(userName, password, loginFunc){
-	//console.log("send Login Request: "," userName="+userName, ", password="+password);
+	console.log("send Login Request: "," userName="+userName, ", password="+password);
 	var defualtSetting = "MaxLate=5/MaxMissing=3/StatisticsFrequency=3";
 	$.ajax({
 	  	url:BaseURL + '/login',
 	   	method : "POST",
 	   	data : '{"Username":"'+userName+'","Password":"'+password+'"}',
 	   	success: function(data) {
-	   		//console.log('success login:'," userName="+userName,", data="+data);
+	   		console.log('success login:'," userName="+userName,", data="+data);
 			loginFunc(userName, data);
 	   	},
 	   	error: function (ajaxContext) {
@@ -172,20 +171,36 @@ var sendAddNewReportRequest = function(ownerName, GroupId, GroupName, Summary, r
 	  		}
 		});
 };
-//iamge
-var sendUploadGroupImage = function(ownerName, GroupId, GroupName, Summary, refreshFunc){
+//iamge https://hahiti.blob.core.windows.net/groupsblob
+var sendUploadGroupImage = function(image){
 
-	 	console.log("send add new report request",ownerName,GroupId,GroupName,Summary);
+	 	console.log("send Upload Group Image");
 		$.ajax({
-		  	url:BaseURL + '/reports',
+		  	url: 'https://hahiti.blob.core.windows.net/groupsblob',
 		   	method : "PUT",
-		   	data : '{"Submitter":"'+ownerName+'","GroupId":"'+GroupId+'","GroupName":"'+GroupName+'","Summary":"'+Summary+'"}',
+		   	data : image,
 		   	success: function(data) {
-		   		console.log('success add new report',ownerName,GroupId,GroupName,Summary,data);
+		   		console.log('success upload image:'," data=" + data);
 				refreshFunc();  		
 		   	},
 		   	error: function (ajaxContext) {
 	        	alert(ajaxContext.responseText)
 	  		}
 		});
+};
+
+//Statistics
+var sendGetAllStatistics = function(userName, refreshFunc){
+	console.log("send get all Statistics request:",userName);
+	$.ajax({
+	  	url:BaseURL + '/allStatistics/'+userName,
+	   	method : "GET",
+	   	success: function(data) {
+	   		console.log('success get all Statistics:',userName,data);
+			refreshFunc(data);	   		
+	   	},
+	   	error: function (ajaxContext) {
+        	alert(ajaxContext.responseText)
+  		}
+	});
 };

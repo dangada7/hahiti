@@ -1,7 +1,7 @@
 
-//var BaseURL = "http://localhost:8080/hahiti";
+var BaseURL = "http://localhost:8080/hahiti";
 
-var BaseURL = "http://hahiti.cloudapp.net";
+//var BaseURL = "http://hahiti.cloudapp.net";
 
 
 //sign in + login

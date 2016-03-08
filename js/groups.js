@@ -89,11 +89,13 @@ $(document).ready(function(){
     sendAddGroupRequest(groupName,groupNotes,userName, refreshTable);
   });
 
-  addGroupForm
-
   //set the logout button - on click
   $("#logoutButton").click( function(){
         sessionStorage.removeItem('username');
   });
+
+  //proxy
+  addGroupFunc("group1","note1");
+
 
 });
